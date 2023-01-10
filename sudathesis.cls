@@ -1,4 +1,16 @@
 %%
+%% @Author           : Albert Wang
+%% @Time             : 2023-01-08 21:21:01
+%% @Description      :
+%% @Email            : shadowofgost@outlook.com
+%% @FilePath         : /Sudathesis-Bachelor-Template/sudathesis.cls
+%% @LastTime         : 2023-01-10 11:05:58
+%% @LastAuthor       : Albert Wang
+%% @Software         : Vscode
+%% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
+%%
+
+%%
 %% This is file `sudathesis.cls',
 %% generated with the docstrip utility.
 %%
