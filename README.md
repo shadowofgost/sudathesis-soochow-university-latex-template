@@ -70,6 +70,11 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 * `main.pdf`：编译生成的pdf文件也是论文
 * `help.pdf`：帮助文档，里面有详细的关于模板的使用说明，可以参考相关的tex文件比对查看
 
+## 使用方法
+1.  下载 最新的release 文件
+2. 在`overleaf.com` 中 `New Project -> Upload Project -> select a .zip file`, 上传刚才下载的zip文件
+3. 在左上角 `Menu -> Compiler` 中选择编译器为XeLaTex， 然后右上角ReCompile
+
 ## 论文格式标准的内容
 
 * [本科生毕业论文格式标准](./standards/本科生模板设计格式.md)
