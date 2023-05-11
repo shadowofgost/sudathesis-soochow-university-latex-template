@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /Sudathesis-Bachelor-Template/sudathesis.cls
-%% @LastTime         : 2023-01-10 11:05:58
+%% @LastTime         : 2023-05-11 11:49:44
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -35,7 +35,7 @@
 %%
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sudathesis}
-[2022/10/05 7.3.1 Soochow University Thesis Template]
+[2023/04/06 2.0.0 Soochow University Thesis Template]
 \newcommand\thu@error[1]{%
   \ClassError{sudathesis}{#1}{}%
 }
@@ -70,7 +70,7 @@
 }
 \hyphenation{Thu-Thesis}
 \def\sudathesis{ThuThesis}
-\def\version{7.3.1}
+\def\version{2.0.0}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -462,12 +462,24 @@
       }%
     \fi
   \else
-    \geometry{
-      margin     = 3cm,
-      headheight = 2.7cm,
-      headsep    = 0.3cm,
-      footskip   = 0.8cm,
-    }%
+    \ifthu@degree@graduate
+      \geometry{
+        top        = 3.3cm,
+        bottom     = 2.7cm,
+        left       = 2.75cm,
+        right      = 2.75cm,
+        headheight = 2.6cm,
+        headsep    = 0.4cm,
+        footskip   = 0.7cm,
+      }%
+    \else
+      \geometry{
+        margin     = 3cm,
+        headheight = 2.7cm,
+        headsep    = 0.3cm,
+        footskip   = 0.8cm,
+      }%
+    \fi
   \fi
 }
 \thu@set@geometry
@@ -678,17 +690,21 @@
 \thu@def@fontsize{qihao}{5.5bp}
 \thu@def@fontsize{bahao}{5bp}
 \ifthu@system@auto
-  \IfFileExists{/System/Library/Fonts/Menlo.ttc}{
-    \thusetup{system = mac}
+  \IfFileExists{./fonts/simsun.ttc}{
+    \thusetup{system = windows}
   }{
-    \IfFileExists{/dev/null}{
-      \IfFileExists{null:}{
-        \thusetup{system = windows}
-      }{
-        \thusetup{system = unix}
-      }
+    \IfFileExists{/System/Library/Fonts/Menlo.ttc}{
+      \thusetup{system = mac}
     }{
-      \thusetup{system = windows}
+      \IfFileExists{/dev/null}{
+        \IfFileExists{null:}{
+          \thusetup{system = windows}
+        }{
+          \thusetup{system = unix}
+        }
+      }{
+        \thusetup{system = windows}
+      }
     }
   }
 \fi
@@ -699,6 +715,9 @@
   \ifthu@system@windows
     \thusetup{fontset = windows}
   \else
+  \IfFileExists{./fonts/simsun.ttc}{
+    \thusetup{fontset = windows}
+  }{
     \IfFontExistsTF{SimSun}{
       \thusetup{fontset = windows}
     }{
@@ -716,6 +735,7 @@
         \fi
       }
     }
+  }
   \fi
 \fi
 \newcommand\thu@set@font{%
@@ -933,6 +953,9 @@
     \thusetup{cjk-font = mac}
   \else
     \ifthu@fontset@windows
+      \IfFileExists{./fonts/simsun.ttc}{
+      \thusetup{cjk-font = windows}
+      }{
       \IfFontExistsTF{SimSun}{
         \thusetup{cjk-font = windows}
       }{
@@ -941,7 +964,7 @@
         }{
           \thu@error{Cannot find "SimSun" font}
         }
-      }
+      }}
     \else
       \ifthu@fontset@ubuntu
         \thusetup{cjk-font = noto}
@@ -953,16 +976,17 @@
 \fi
 \newfontfamily\zititime{Times New Roman}%TODO: 主要是标记此处更改，添加Times New Roman的宏语言
 \newcommand\thu@set@cjk@font@windows{%
-  \setCJKmainfont{SimSun}[
+  \setCJKmainfont[
     AutoFakeBold = 3,
-    ItalicFont   = KaiTi,
-  ]%
-  \setCJKsansfont{SimHei}[AutoFakeBold = 3]%
-  \setCJKmonofont{FangSong}%
-  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold = 3]%
-  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold = 3]%
-  \setCJKfamilyfont{zhkai}{KaiTi}%
-  \setCJKfamilyfont{zhfs}{FangSong}%
+    ItalicFont   = simkai.ttf,
+    Path=fonts/
+  ]{simsun.ttc}%
+  \setCJKsansfont[AutoFakeBold = 3,Path=fonts/]{simhei.ttf}%
+  \setCJKmonofont[AutoFakeBold = 3,Path=fonts/]{simfang.ttf}%
+  \setCJKfamilyfont{zhsong}[AutoFakeBold = 3,Path=fonts/]{simsun.ttc}%
+  \setCJKfamilyfont{zhhei}[AutoFakeBold = 3,Path=fonts/]{simhei.ttf}%
+  \setCJKfamilyfont{zhkai}[AutoFakeBold = 3,Path=fonts/]{simkai.ttf}%
+  \setCJKfamilyfont{zhfs}[AutoFakeBold = 3,Path=fonts/]{simfang.ttf}%
 }
 \@namedef{thu@set@cjk@font@mac-word}{%
   \setCJKmainfont{SimSun}[%
@@ -1080,7 +1104,8 @@
   \providecommand\songti{\CJKfamily{zhsong}}
   \providecommand\heiti{\CJKfamily{zhhei}}
   \providecommand\fangsong{\CJKfamily{zhfs}}
-  \providecommand\kaishu{\CJKfamily{zhkai}}
+  \providecommand\kaiti{\CJKfamily{zhkai}}
+  \newcommand{\kai}{\CJKfamily{zhkai}}
 \fi
 \newcommand\thu@set@cjk@font{%
   \@nameuse{thu@set@cjk@font@\thu@cjk@font}%
@@ -1452,7 +1477,7 @@
 \renewcommand\frontmatter{%
   \cleardoublepage
   \@mainmatterfalse
-  \pagenumbering{roman}%
+  \pagenumbering{Roman}%
 }
 \renewcommand\mainmatter{%
   \cleardoublepage
@@ -1468,9 +1493,65 @@
   \fi
   \@mainmatterfalse
   \thu@backmattertrue
-  \thusetup{toc-depth = 0}%
+  \thusetup{toc-depth = 1}%
 }
 \pagestyle{fancy}
+\fancypagestyle{cnfrontmatter}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.75bp}%
+  \renewcommand\footrulewidth{0pt}%
+  \ifthu@degree@bachelor
+    \fancyhead[C]{%
+      \ifthu@main@language@chinese
+        \xiaowu 苏州大学本科生毕业设计（论文）
+      \else
+        \xiaowu
+      \fi
+      }%
+    \fancyfoot[C]{
+      \ifthu@main@language@chinese
+        \xiaowu
+      \else
+        \xiaowu
+      \fi
+      -\thepage-
+    }%
+  \else
+    \fancyhead[RO,LE]{\xiaowu\rmfamily{摘要}\vspace{0mm}}
+    \fancyhead[LO,RE]{\xiaowu\rmfamily\thu@title\vspace{0mm}}
+    \fancyfoot[C]{\xiaowu\thepage}
+  \fi
+  \let\@mkboth\markboth
+  \let\sectionmark\@gobble
+}
+\fancypagestyle{enfrontmatter}{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0.75bp}%
+  \renewcommand\footrulewidth{0pt}%
+  \ifthu@degree@bachelor
+    \fancyhead[C]{%
+      \ifthu@main@language@chinese
+        \xiaowu 苏州大学本科生毕业设计（论文）
+      \else
+        \xiaowu
+      \fi
+    }%
+    \fancyfoot[C]{
+      \ifthu@main@language@chinese
+        \xiaowu
+      \else
+        \xiaowu
+      \fi
+      -\thepage-
+    }%
+  \else
+    \fancyhead[RO,LE]{\xiaowu\rmfamily{Abstract}\vspace{0mm}}
+    \fancyhead[LO,RE]{\xiaowu\rmfamily\thu@title@en\vspace{0mm}}
+    \fancyfoot[C]{\xiaowu\thepage}
+  \fi
+  \let\@mkboth\markboth
+  \let\sectionmark\@gobble
+}
 \fancypagestyle{plain}{%
   \fancyhf{}%
   \renewcommand\footrulewidth{0pt}%
@@ -1495,15 +1576,26 @@
     \let\chaptermark\@gobble
   \else
     \renewcommand\headrulewidth{0.75bp}%
-    \fancyhead[C]{%
-      \wuhao
+    \fancyhead[LE,RO]{
+      \xiaowu
+      \rmfamily
       \ifthu@main@language@chinese
         \leftmark
       \else
         \MakeUppercase{\leftmark}%
       \fi
-      }%
-    \fancyfoot[C]{\wuhao\thepage}%
+      \vspace{0mm}
+      }
+    \fancyhead[LO,RE]{
+      \xiaowu
+      \rmfamily
+      \ifthu@main@language@chinese
+        \thu@title
+      \else
+        \MakeUppercase{\thu@title@en}%
+      \fi
+      \vspace{0mm}}
+    \fancyfoot[C]{\xiaowu\thepage}%
     \let\@mkboth\markboth
     \def\chaptermark##1{%
       \markboth{%
@@ -1657,26 +1749,26 @@
 \patchcmd{\@addtocurcol}%
   {\vskip \intextsep}%
   {\edef\save@first@penalty{\the\lastpenalty}\unpenalty
-   \ifnum \lastpenalty = \@M  % hopefully the OR penalty
-     \unpenalty
-   \else
-     \penalty \save@first@penalty \relax % put it back
-   \fi
-   \ifnum\outputpenalty <-\@Mii
-     \addvspace\intextsep
-     \vskip\parskip
-   \else
-     \addvspace\intextsep
-   \fi}%
+  \ifnum \lastpenalty = \@M  % hopefully the OR penalty
+    \unpenalty
+  \else
+    \penalty \save@first@penalty \relax % put it back
+  \fi
+  \ifnum\outputpenalty <-\@Mii
+    \addvspace\intextsep
+    \vskip\parskip
+  \else
+    \addvspace\intextsep
+  \fi}%
   {}{\thu@patch@error{\@addtocurcol}}
 \patchcmd{\@addtocurcol}%
   {\vskip\intextsep \ifnum\outputpenalty <-\@Mii \vskip -\parskip\fi}%
   {\ifnum\outputpenalty <-\@Mii
-     \aftergroup\vskip\aftergroup\intextsep
-     \aftergroup\nointerlineskip
-   \else
-     \vskip\intextsep
-   \fi}%
+    \aftergroup\vskip\aftergroup\intextsep
+    \aftergroup\nointerlineskip
+  \else
+    \vskip\intextsep
+  \fi}%
   {}{\thu@patch@error{\@addtocurcol}}
 \patchcmd{\@getpen}{\@M}{\@Mi}
   {}{\thu@patch@error{\@getpen}}
@@ -1782,6 +1874,7 @@
 }
 \ifthu@degree@bachelor
   \newcommand{\thu@abstract@name}{摘\quad 要}
+  \newcommand{\thu@yingyan@name}{引\quad 言}
   \newcommand{\thu@abstract@name@en}{Abstract}
 \else
   \newcommand{\thu@abstract@name}{摘\quad 要}
@@ -1853,69 +1946,113 @@
       }%
     \fi
   \else
-    \ctexset{%
-      chapter = {
-        beforeskip = 27bp,
-        afterskip  = 27bp,
-        number     = \thechapter,
-      },
-      section = {
-        beforeskip = 24bp,
-        afterskip  = 6bp,
-      },
-      subsection = {
-        beforeskip = 12bp,
-        afterskip  = 6bp,
-      },
-      subsubsection = {
-        beforeskip = 12bp,
-        afterskip  = 6bp,
-      },
-    }%
-    \ifthu@main@language@chinese
+    \ifthu@degree@graduate
       \ctexset{%
         chapter = {
-          format      = \centering\sffamily\sanhao,
-          nameformat  = {},
-          titleformat = {},
-          name        = {第,章},
-          aftername   = \quad,
+          format     = \centering\sffamily\zititime\fontsize{18bp}{35.1bp}\selectfont,
+          aftername  = \quad,
+          beforeskip = 17.55bp,
+          afterskip  = 17.55bp,
         },
         section = {
-          format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+          format     = \sffamily\zititime\fontsize{14bp}{27.3bp}\selectfont,
           aftername  = \quad,
+          beforeskip = 13.65bp,
+          afterskip  = 13.65bp,
         },
         subsection = {
-          format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
+          format     = \kaiti\zititime\fontsize{12bp}{23.4bp}\selectfont,
           aftername  = \quad,
+          beforeskip = 11.7bp,
+          afterskip  = 11.7bp,
         },
         subsubsection = {
-          format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
+          format     = \sffamily\zititime\fontsize{12bp}{23.4bp}\selectfont,
           aftername  = \quad,
+          beforeskip = 11.7bp,
+          afterskip  = 11.7bp,
         },
       }%
+      \ifthu@main@language@chinese
+        \ctexset{
+          chapter = {
+            name   = {第,章},
+            number = \thechapter,
+          },
+        }%
+      \else
+        \ctexset{
+          chapter = {
+            name   = \chaptername\space,
+            number = \thu@english@number{chapter},
+          },
+        }%
+      \fi
     \else
       \ctexset{%
         chapter = {
-          format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
-          nameformat  = \MakeUppercase,
-          titleformat = \MakeUppercase,
-          name        = \chaptername\space,
-          aftername   = \space,
+          beforeskip = 27bp,
+          afterskip  = 27bp,
+          number     = \thechapter,
         },
         section = {
-          format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
-          aftername  = \space,
+          beforeskip = 24bp,
+          afterskip  = 6bp,
         },
         subsection = {
-          format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
-          aftername  = \space,
+          beforeskip = 12bp,
+          afterskip  = 6bp,
         },
         subsubsection = {
-          format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
-          aftername  = \space,
+          beforeskip = 12bp,
+          afterskip  = 6bp,
         },
       }%
+      \ifthu@main@language@chinese
+        \ctexset{%
+          chapter = {
+            format      = \centering\sffamily\sanhao,
+            nameformat  = {},
+            titleformat = {},
+            name        = {第,章},
+            aftername   = \quad,
+          },
+          section = {
+            format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+            aftername  = \quad,
+          },
+          subsection = {
+            format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
+            aftername  = \quad,
+          },
+          subsubsection = {
+            format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
+            aftername  = \quad,
+          },
+        }%
+      \else
+        \ctexset{%
+          chapter = {
+            format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
+            nameformat  = \MakeUppercase,
+            titleformat = \MakeUppercase,
+            name        = \chaptername\space,
+            aftername   = \space,
+          },
+          section = {
+            format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
+            aftername  = \space,
+          },
+          subsection = {
+            format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
+            aftername  = \space,
+          },
+          subsubsection = {
+            format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+            aftername  = \space,
+          },
+        }%
+      \fi
     \fi
   \fi
 }
@@ -2009,25 +2146,25 @@
         {\contentspush{\thecontentslabel\quad}}{}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
-        [1em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
+        [2em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
       \titlecontents{subsection}
-        [1.5em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
+        [4em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
     \else
       \ifthu@main@language@english
         \titlecontents{chapter}
-          [\z@]{\addvspace{6bp}\sffamily}
+          [\z@]{\addvspace{6bp}\rmfamily}
           {\contentspush{\thecontentslabel\quad}}{}
           {\rmfamily\thu@leaders\thecontentspage}%
         \titlecontents{section}
-          [0.5cm]{\rmfamily}
+          [2em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
           {\contentspush{\thecontentslabel\quad}}{}
           {\thu@leaders\thecontentspage}%
         \titlecontents{subsection}
-          [1cm]{\rmfamily}
+          [4em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
           {\contentspush{\thecontentslabel\quad}}{}
           {\thu@leaders\thecontentspage}%
       \fi
@@ -2035,29 +2172,29 @@
   \else
     \ifthu@main@language@chinese
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}\sffamily}
+        [\z@]{\addvspace{6bp}\sffamily\zititime\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
-        [1em]{}
+        [2em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
       \titlecontents{subsection}
-        [2em]{}
+        [4em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
         {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
     \else
       \titlecontents{chapter}
-        [\z@]{\addvspace{6bp}\heiti}
+        [\z@]{\addvspace{6bp}\rmfamily}
         {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
         {\rmfamily\thu@leaders\thecontentspage}%
       \titlecontents{section}
-        [1em]{}
-        {\contentspush{\thecontentslabel\space}}{}
+        [2em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
+        {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
       \titlecontents{subsection}
-        [2em]{}
-        {\contentspush{\thecontentslabel\space}}{}
+        [4em]{\rmfamily\fontsize{14bp}{18bp}\selectfont}
+        {\contentspush{\thecontentslabel\quad}}{}
         {\thu@leaders\thecontentspage}%
     \fi
   \fi
@@ -2078,6 +2215,13 @@
   title* = {
     default = {Title},
     name    = title@en,
+  },
+  subtitle = {
+    default = {副标题},
+  },
+  subtitle* = {
+    default = {SubTitle},
+    name    = subtitle@en,
   },
   author = {
     default = {姓名},
@@ -2126,12 +2270,24 @@
   department = {
     default = {计算机科学与技术系},
   },
+  department* = {
+    default = {Computer Science and Technology Department},
+    name = department@en,
+  },
   discipline = {
-    % default = {计算机科学与技术},
+    default = {计算机科学与技术},
   },
   discipline* = {
-    % default = {Computer Science and Technology},
+    default = {Computer Science and Technology},
     name    = discipline@en,
+  },
+  discipline-direct = {
+    % default = {计算机科学与技术},
+    name    = discipline@direct,
+  },
+  discipline-direct* = {
+    % default = {计算机科学与技术},
+    name    = discipline@direct@en,
   },
   date = {
     default = {\the\year-\two@digits{\month}-\two@digits{\day}},
@@ -2238,6 +2394,105 @@
   \expandafter\comma@parse\expandafter{#1}{\thu@name@title@process}%
   \thu@name@title@format{\thu@@name}{\thu@@title}%
 }
+% 中文首页
+%TODO!! 以下是生成苏大论文封面，但是有错误不启用
+% 单位代码
+% 首页需要的额外代码
+\def\suda@unicode{1006}
+\newcommand{\unicode}[1]{%
+    \def\suda@unicode{#1}
+}
+\newcommand{\ulinecvrtc}[1]{\uline{\makebox[24em][c]{#1}}}
+\newcommand{\ulinecvcbc}[1]{\uline{\makebox[14em][c]{#1}}}
+\newcommand\dlmu[2][4cm]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+%
+\newcommand{\titlech}{
+  %\thispagestyle{empty}%
+  \begin{titlepage}
+  \begin{center}
+    \hfill %居右
+    \raisebox{-.2cm}[0pt][0pt]{
+      \fontsize{10.5bp}{20.48bp}\selectfont\sffamily
+      \begin{tabular}{l}
+        学校代码：\bf\suda@unicode\\[.1ex]
+        学\qquad 号：\bf\thu@student@id\\[.1ex]
+      \end{tabular}
+    }
+    \vskip 20bp
+      \includegraphics[width=200bp]{suda.ps}
+      \vskip 20bp
+      \ifthu@degree@master
+        \centerline{\chuhao\rmfamily{硕士学位论文}}
+      \fi
+      \ifthu@degree@doctor
+        \centerline{\chuhao\rmfamily{博士学位论文}}
+      \fi
+      \vskip 10bp
+      \ifthu@degree@type@academic
+        \centerline{\erhao\rmfamily{（学术学位）}}
+      \fi
+      \ifthu@degree@type@professional
+        \centerline{\erhao\rmfamily{（专业学位）}}
+      \fi
+      \includegraphics[width=130pt]{sudamark.jpg}
+      ~~\\
+      \vskip 20bp
+      \begin{tabular}{l}
+        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@title}} \\ %[.4ex]%\hline
+        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@subtitle}} \\
+        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\rmfamily{\thu@title@en}} \\%[.4ex]
+        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@subtitle@en}} \\%[.4ex]
+      \end{tabular}
+      \vskip 20bp
+      ~~\\
+      {
+        \fontsize{14bp}{27.3bp}\selectfont\sffamily
+        \begin{tabular}{p{3cm}p{7cm}}
+            研~究~生~姓~名&\ulinecvcbc{\thu@author}\\[.4ex]
+            指导教师姓名&\ulinecvcbc{\thu@supervisor}\\[.4ex]
+            专~~~业~~~名~~称&\ulinecvcbc{\thu@discipline}\\[.4ex]
+            研~~~究~~~方~~向&\ulinecvcbc{\thu@discipline@direct}\\[.4ex]
+            所~~~在~~~院~~部&\ulinecvcbc{\thu@department}\\[.4ex]
+            论文提交日期&\ulinecvcbc{\thu@format@date{\thu@date@zh@digit@short}{\thu@date}}\\[.4ex]
+        \end{tabular}
+      }
+    \end{center}
+  \end{titlepage}
+}
+
+% 英文首页
+\newcommand{\titleeng}{
+  \cleardoublepage
+  \thispagestyle{empty}
+  \vspace*{\stretch{1}}
+  \begin{center}
+  \begin{minipage}[h]{.8\textwidth}
+  %\begin{spacing}[2.0]
+      \centering{\xiaoer\textbf{\thu@title@en}}
+  %\end{spacing}
+  \end{minipage}
+  \vskip 20bp
+  \begin{minipage}[h]{.75\textwidth}
+    \centering{\xiaosan\thu@subtitle@en}
+  \end{minipage}
+  \vspace*{\stretch{1}}
+  ~~\\
+    {\zihao{4}A Dissertation Submitted for the Degree of \thu@degree@name@en}\\
+    \vskip 110bp
+    \begin{center}
+      \xiaosan
+        \begin{tabular}{rl}
+            \textbf{Candidate:\ }&\textbf{\thu@author@en}\\[0.5ex]
+            \textbf{Supervisor:\ }&\textbf{\thu@supervisor@en}\\
+        \end{tabular}
+    \end{center}
+    \vskip 125bp
+    \sanhao{
+    \thu@department@en \\[1.8ex]
+    Soochow University, Soochow, China}
+  \end{center}
+}
+%TODO!! 以上是生成苏大论文封面，但是有错误不启用
 \renewcommand\maketitle{%
   \cleardoublepage
   \pagenumbering{Alph}%
@@ -2428,14 +2683,14 @@
       \renewcommand\CJKglue{\hspace{1bp}}%
     \fi
     \ifthu@thesis@type@thesis
-      (申请清华大学\thu@degree@name
+      (申请苏州大学\thu@degree@name
       \ifthu@degree@type@professional
         专业%
       \fi
       学位论文)%
     \else
       \ifthu@thesis@type@proposal
-        (清华大学%
+        (苏州大学%
         \ifthu@degree@doctor
           博士%
         \else
@@ -2629,7 +2884,7 @@
 }
 \newcommand\thu@titlepage@en@degree{%
   \thu@thesis@name@en{} submitted to\par
-  {\bfseries Tsinghua University\par}%
+  {\bfseries Soochow University\par}%
   in partial fulfillment of the requirement\par
   for the
   \ifthu@degree@type@professional
@@ -2675,7 +2930,7 @@
   \vfill
   \begingroup
     \centering
-    \includegraphics{tsinghua-name-bachelor.pdf}%
+    \includegraphics{suda.ps}%
     \vskip 0.94cm%
     {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\par}%
   \endgroup
@@ -2971,20 +3226,31 @@
   }%
   \expandafter\comma@parse\expandafter{#1}{\thu@clist@processor}%
 }
+\newenvironment{yingyan}{
+  \ifthu@degree@bachelor
+    \cleardoublepage
+  \fi
+  \thusetup{language = chinese}%
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\zititime\fontsize{15bp}{29.25bp}\selectfont,
+        aftername  = \quad,
+        beforeskip = 29.25bp,
+        afterskip  = 29.25bp,
+      },
+      }%
+    \thu@chapter*{\thu@yingyan@name}%
+}{}
 \newenvironment{abstract}{%
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
   \thusetup{language = chinese}%
   \ifthu@degree@graduate
-    \begingroup
-      \ifthu@main@language@english
-        \ctexset{%
-          chapter/format = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
-        }%
-      \fi
-      \thu@chapter*{\thu@abstract@name}%
-    \endgroup
+    \addvspace{35.1bp}
+    \chapter*{\centering\sffamily\zititime\fontsize{18bp}{35.1bp}\selectfont{\thu@title}}
+    \centerline{\centering\sffamily\zititime\fontsize{15bp}{29.25bp}\selectfont{\thu@abstract@name}}
+      \addcontentsline{toc}{chapter}{\thu@abstract@name}
   \else
     \ctexset{%
       chapter = {
@@ -3004,6 +3270,12 @@
     \textbf{关键词：}%
   \fi
   \thu@clist@use{\thu@keywords}{；}%
+  \ifthu@degree@graduate
+    \par
+    \null\par
+    \rightline{\rmfamily\fontsize{12bp}{23.4bp}\selectfont{作~~~~者：\thu@author}}
+    \rightline{\rmfamily\fontsize{12bp}{23.4bp}\selectfont{指导老师：\thu@supervisor}}
+  \fi
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
@@ -3015,7 +3287,10 @@
   \fi
   \thusetup{language = english}%
   \ifthu@degree@graduate
-    \thu@chapter*{\thu@abstract@name@en}%
+    \addvspace{35.1bp}
+    \chapter*{\centering\sffamily\zititime\fontsize{18bp}{35.1bp}\selectfont{\thu@title@en}}
+    \centerline{\centering\sffamily\zititime\fontsize{15bp}{29.25bp}\selectfont{\thu@abstract@name@en}}
+    \addcontentsline{toc}{chapter}{\thu@abstract@name@en}
   \else
       \ctexset{%
       chapter = {
@@ -3024,7 +3299,6 @@
       },
       }%
     \thu@chapter*{\thu@abstract@name@en}%
-    %\thu@chapter*[]{\thu@abstract@name@en}%
   \fi
 }{%
   \par
@@ -3034,6 +3308,12 @@
   \fi
   \textbf{Keywords:}\space
   \thu@clist@use{\thu@keywords@en}{; }%
+  \ifthu@degree@graduate
+    \par
+    \null\par
+    \rightline{\rmfamily\fontsize{12bp}{23.4bp}\selectfont{Written by: \thu@author@en}}
+    \rightline{\rmfamily\fontsize{12bp}{23.4bp}\selectfont{Supervised by: \thu@supervisor@en}}
+  \fi
   \ifthu@degree@graduate
     \vspace*{\stretch{1}}%
   \fi
@@ -3774,9 +4054,6 @@
         aftertitle = ：,
       },
     }%
-    \ifthu@degree@graduate
-      \fontsize{12bp}{16bp}\selectfont
-    \fi
     \setlist[achievements]{
       topsep      = 6bp,
       itemsep     = 6bp,
@@ -3785,6 +4062,7 @@
       labelsep    = 0pt,
       align       = left,
       label       = [\arabic*],
+      resume     = achievements,
     }%
   \else
     \ctexset{
@@ -3807,6 +4085,7 @@
       labelsep    = 0.5cm,
       align       = right,
       label       = [\arabic*],
+      resume     = achievements,
     }%
   \fi
 }{}
