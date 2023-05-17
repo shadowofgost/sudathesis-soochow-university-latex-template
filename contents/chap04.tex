@@ -1,16 +1,16 @@
 %%
 %% @Author           : Albert Wang
-%% @Time             : 2023-01-08 21:21:02
+%% @Time             : 2023-04-06 22:03:52
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
-%% @FilePath         : /Sudathesis-Bachelor-Template/contents/chap04.tex
-%% @LastTime         : 2023-01-10 11:11:06
+%% @FilePath         : /sudathesis-soochow-university-latex-template/contents/chap04.tex
+%% @LastTime         : 2023-05-17 16:26:57
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
 %%
 
-% !TeX root = ../main.tex
+% !TeX root = ../thuthesis-example.tex
 
 \chapter{引用文献的标注}
 
@@ -27,6 +27,7 @@
 \thusetup{
   cite-style = super,
 }
+\noindent
 \begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
   \verb|\cite{zhangkun1994}|               & \cite{zhangkun1994}               \\
   \verb|\citet{zhangkun1994}|              & \citet{zhangkun1994}              \\
@@ -42,6 +43,7 @@
 \thusetup{
   cite-style = inline,
 }
+\noindent
 \begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
   \verb|\cite{zhangkun1994}|               & \cite{zhangkun1994}               \\
   \verb|\citet{zhangkun1994}|              & \citet{zhangkun1994}              \\
@@ -59,7 +61,8 @@
 \thusetup{
   cite-style = author-year,
 }
-\begin{tabular}{l@{\space$\Rightarrow$\space}l}
+\noindent
+\begin{tabular}{@{}l@{$\Rightarrow$}l@{}}
   \verb|\cite{zhangkun1994}|                & \cite{zhangkun1994}                \\
   \verb|\citet{zhangkun1994}|               & \citet{zhangkun1994}               \\
   \verb|\citep{zhangkun1994}|               & \citep{zhangkun1994}               \\

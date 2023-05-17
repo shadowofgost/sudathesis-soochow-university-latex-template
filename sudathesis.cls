@@ -3,13 +3,12 @@
 %% @Time             : 2023-01-08 21:21:01
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
-%% @FilePath         : /Sudathesis-Bachelor-Template/sudathesis.cls
-%% @LastTime         : 2023-05-11 11:49:44
+%% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
+%% @LastTime         : 2023-05-18 00:03:27
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
 %%
-
 %%
 %% This is file `sudathesis.cls',
 %% generated with the docstrip utility.
@@ -20,7 +19,7 @@
 %%
 %% This is a generated file.
 %%
-%% Copyright (C) 2005-2022 by Tsinghua University TUNA Association <tuna@tsinghua.edu.cn>
+%% Copyright (C) 2005-2023 by Tsinghua University TUNA Association <tuna@tsinghua.edu.cn>
 %%
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -35,7 +34,7 @@
 %%
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sudathesis}
-[2023/04/06 2.0.0 Soochow University Thesis Template]
+[2023/05/17 2.1.0 Soochow University Thesis Template]
 \newcommand\thu@error[1]{%
   \ClassError{sudathesis}{#1}{}%
 }
@@ -70,7 +69,7 @@
 }
 \hyphenation{Thu-Thesis}
 \def\sudathesis{ThuThesis}
-\def\version{2.0.0}
+\def\version{2.1.0}
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
@@ -339,11 +338,6 @@
   \PassOptionsToClass{twoside}{book}
 \fi
 \PassOptionsToPackage{no-math}{fontspec}
-%\ifthu@book@printstyle@oneside
-%  \LoadClass[a4paper,UTF8,zihao=-4,scheme=plain,fontset=none,oneside]{ctexbook}[2017/04/01]
-%\else
-%  \LoadClass[a4paper,UTF8,zihao=-4,scheme=plain,fontset=none,twoside]{ctexbook}[2017/04/01]
-%\fi
 \LoadClass[a4paper,UTF8,zihao=-4,scheme=plain,fontset=none]{ctexbook}[2017/04/01]
 \RequirePackage{etoolbox}
 \RequirePackage{filehook}
@@ -388,11 +382,9 @@
   }
 }
 \AtEndOfPackageFile*{natbib}{
-  \ifthu@degree@bachelor
-    \@ifpackageloaded{apacite}{}{
-      \RequirePackage{bibunits}
-    }
-  \fi
+  \@ifpackageloaded{apacite}{}{
+    \RequirePackage{bibunits}
+  }
 }
 \newcommand\thu@package@conflict[2]{%
   \AtEndOfPackageFile*{#1}{%
@@ -715,27 +707,27 @@
   \ifthu@system@windows
     \thusetup{fontset = windows}
   \else
-  \IfFileExists{./fonts/simsun.ttc}{
-    \thusetup{fontset = windows}
-  }{
-    \IfFontExistsTF{SimSun}{
+    \IfFileExists{./fonts/simsun.ttc}{
       \thusetup{fontset = windows}
     }{
-      \IfFileExists{\thu@mac@word@font@path/SimSun.ttf}{
+      \IfFontExistsTF{SimSun}{
         \thusetup{fontset = windows}
       }{
-        \ifthu@system@mac
-          \thusetup{fontset = mac}
-        \else
-          \IfFontExistsTF{Noto Serif CJK SC}{
-            \thusetup{fontset = ubuntu}
-          }{
-            \thusetup{fontset = fandol}
-          }
-        \fi
+        \IfFileExists{\thu@mac@word@font@path/SimSun.ttf}{
+          \thusetup{fontset = windows}
+        }{
+          \ifthu@system@mac
+            \thusetup{fontset = mac}
+          \else
+            \IfFontExistsTF{Noto Serif CJK SC}{
+              \thusetup{fontset = ubuntu}
+            }{
+              \thusetup{fontset = fandol}
+            }
+          \fi
+        }
       }
     }
-  }
   \fi
 \fi
 \newcommand\thu@set@font{%
@@ -761,7 +753,7 @@
 \newcommand\thu@set@font@times{%
   \setmainfont{Times New Roman}%
   \setsansfont{Arial}%
-  \ifthu@system@mac
+  \ifthu@fontset@mac
     \setmonofont{Menlo}[Scale = MatchLowercase]%
   \else
     \setmonofont{Courier New}[Scale = MatchLowercase]%
@@ -954,17 +946,18 @@
   \else
     \ifthu@fontset@windows
       \IfFileExists{./fonts/simsun.ttc}{
-      \thusetup{cjk-font = windows}
-      }{
-      \IfFontExistsTF{SimSun}{
         \thusetup{cjk-font = windows}
       }{
-        \IfFileExists{\thu@mac@word@font@path/SimSun.ttf}{
-          \thusetup{cjk-font = mac-word}
+        \IfFontExistsTF{SimSun}{
+          \thusetup{cjk-font = windows}
         }{
-          \thu@error{Cannot find "SimSun" font}
+          \IfFileExists{\thu@mac@word@font@path/SimSun.ttf}{
+            \thusetup{cjk-font = mac-word}
+          }{
+            \thu@error{Cannot find "SimSun" font}
+          }
         }
-      }}
+      }
     \else
       \ifthu@fontset@ubuntu
         \thusetup{cjk-font = noto}
@@ -1273,7 +1266,7 @@
     \newcommand\square{\mdlgwhtsquare}%
     \newcommand\blacksquare{\mdlgblksquare}%
     \AtBeginDocument{%
-      \renewcommand\checkmark{\ensuremath{✓}}%
+      \renewcommand\checkmark{\ensuremath{\symbol{"2713}}}%
     }%
     \renewcommand\thu@qed{\ensuremath{\QED}}%
   }%
@@ -1477,7 +1470,11 @@
 \renewcommand\frontmatter{%
   \cleardoublepage
   \@mainmatterfalse
-  \pagenumbering{Roman}%
+  \ifthu@degree@bachelor
+    \pagenumbering{roman}%
+  \else
+    \pagenumbering{Roman}%
+  \fi
 }
 \renewcommand\mainmatter{%
   \cleardoublepage
@@ -1946,113 +1943,46 @@
       }%
     \fi
   \else
-    \ifthu@degree@graduate
-      \ctexset{%
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\zititime\fontsize{18bp}{35.1bp}\selectfont,
+        aftername  = \quad,
+        beforeskip = 17.55bp,
+        afterskip  = 17.55bp,
+      },
+      section = {
+        format     = \sffamily\zititime\fontsize{14bp}{27.3bp}\selectfont,
+        aftername  = \quad,
+        beforeskip = 13.65bp,
+        afterskip  = 13.65bp,
+      },
+      subsection = {
+        format     = \kaiti\zititime\fontsize{12bp}{23.4bp}\selectfont,
+        aftername  = \quad,
+        beforeskip = 11.7bp,
+        afterskip  = 11.7bp,
+      },
+      subsubsection = {
+        format     = \sffamily\zititime\fontsize{12bp}{23.4bp}\selectfont,
+        aftername  = \quad,
+        beforeskip = 11.7bp,
+        afterskip  = 11.7bp,
+      },
+    }%
+    \ifthu@main@language@chinese
+      \ctexset{
         chapter = {
-          format     = \centering\sffamily\zititime\fontsize{18bp}{35.1bp}\selectfont,
-          aftername  = \quad,
-          beforeskip = 17.55bp,
-          afterskip  = 17.55bp,
-        },
-        section = {
-          format     = \sffamily\zititime\fontsize{14bp}{27.3bp}\selectfont,
-          aftername  = \quad,
-          beforeskip = 13.65bp,
-          afterskip  = 13.65bp,
-        },
-        subsection = {
-          format     = \kaiti\zititime\fontsize{12bp}{23.4bp}\selectfont,
-          aftername  = \quad,
-          beforeskip = 11.7bp,
-          afterskip  = 11.7bp,
-        },
-        subsubsection = {
-          format     = \sffamily\zititime\fontsize{12bp}{23.4bp}\selectfont,
-          aftername  = \quad,
-          beforeskip = 11.7bp,
-          afterskip  = 11.7bp,
+          name   = {第,章},
+          number = \thechapter,
         },
       }%
-      \ifthu@main@language@chinese
-        \ctexset{
-          chapter = {
-            name   = {第,章},
-            number = \thechapter,
-          },
-        }%
-      \else
-        \ctexset{
-          chapter = {
-            name   = \chaptername\space,
-            number = \thu@english@number{chapter},
-          },
-        }%
-      \fi
     \else
-      \ctexset{%
+      \ctexset{
         chapter = {
-          beforeskip = 27bp,
-          afterskip  = 27bp,
-          number     = \thechapter,
-        },
-        section = {
-          beforeskip = 24bp,
-          afterskip  = 6bp,
-        },
-        subsection = {
-          beforeskip = 12bp,
-          afterskip  = 6bp,
-        },
-        subsubsection = {
-          beforeskip = 12bp,
-          afterskip  = 6bp,
+          name   = \chaptername\space,
+          number = \thu@english@number{chapter},
         },
       }%
-      \ifthu@main@language@chinese
-        \ctexset{%
-          chapter = {
-            format      = \centering\sffamily\sanhao,
-            nameformat  = {},
-            titleformat = {},
-            name        = {第,章},
-            aftername   = \quad,
-          },
-          section = {
-            format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
-            aftername  = \quad,
-          },
-          subsection = {
-            format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
-            aftername  = \quad,
-          },
-          subsubsection = {
-            format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
-            aftername  = \quad,
-          },
-        }%
-      \else
-        \ctexset{%
-          chapter = {
-            format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
-            nameformat  = \MakeUppercase,
-            titleformat = \MakeUppercase,
-            name        = \chaptername\space,
-            aftername   = \space,
-          },
-          section = {
-            format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
-            aftername  = \space,
-          },
-          subsection = {
-            format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
-            aftername  = \space,
-          },
-          subsubsection = {
-            format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
-            aftername  = \space,
-          },
-        }%
-      \fi
     \fi
   \fi
 }
@@ -2259,14 +2189,29 @@
   joint-supervisor* = {
     name = co@supervisor@en,
   },
-  degree-name = {
+  degree-category = {
     default = {工学博士},
-    name    = degree@name,
+    name    = degree@category,
+  },
+  degree-category* = {
+    default = {Doctor of Philosophy},
+    name    = degree@category@en,
+  },
+  % 为了向后兼容
+  degree-name = {
+    name    = degree@category,
   },
   degree-name* = {
-    default = {Doctor of Philosophy},
-    name    = degree@name@en,
+    name    = degree@category@en,
   },
+}
+\thu@option@hook{degree-name}{%
+  \thu@warning{`degree-name' is deprecated. Use `degree-category' instead.}
+}
+\thu@option@hook{degree-name*}{%
+  \thu@warning{`degree-name*' is deprecated. Use `degree-category*' instead.}
+}
+\thu@define@key{
   department = {
     default = {计算机科学与技术系},
   },
@@ -2275,11 +2220,39 @@
     name = department@en,
   },
   discipline = {
-    default = {计算机科学与技术},
+    % default = {计算机科学与技术},
   },
   discipline* = {
-    default = {Computer Science and Technology},
+    % default = {Computer Science and Technology},
     name    = discipline@en,
+  },
+}
+\thu@option@hook{discipline}{%
+  \ifthu@degree@type@professional
+    \thu@warning{`discipline' for professional degree is deprecated. Use `professional-field' instead.}
+    \let\thu@professional@field\thu@discipline
+    \let\thu@discipline\@empty
+  \fi
+}
+\thu@option@hook{discipline*}{%
+  \ifthu@degree@type@professional
+    \thu@warning{`discipline*' for professional degree is deprecated. Use `professional-field*' instead.}
+    \let\thu@professional@field@en\thu@discipline@en
+    \let\thu@discipline@en\@empty
+  \fi
+}
+\thu@define@key{
+  professional-field = {
+    name    = professional@field,
+  },
+  professional-field* = {
+    name    = professional@field@en,
+  },
+  engineering-field = {
+    name    = engineering@field,
+  },
+  engineering-field* = {
+    name    = engineering@field@en,
   },
   discipline-direct = {
     % default = {计算机科学与技术},
@@ -2384,8 +2357,19 @@
   \stepcounter{thu@csl@count}%
 }
 \newcommand\thu@name@title@format[2]{%
-  \thu@pad{3cm}{\thu@stretch{4em}{#1}}%
-  \thu@stretch{3em}{#2}%
+  \ifthu@degree@type@professional
+    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
+    \thu@stretch{67.6bp}{#1}%
+    \hspace{9.8bp}%
+    % 字距 6bp
+    \begingroup
+      \renewcommand\CJKglue{\hspace{9.8bp}}%
+      #2%
+    \endgroup
+  \else
+    \thu@pad{3cm}{\thu@stretch{4em}{#1}}%
+    \thu@stretch{3em}{#2}%
+  \fi
 }
 \newcommand\thu@name@title[1]{%
   \setcounter{thu@csl@count}{0}%
@@ -2395,7 +2379,7 @@
   \thu@name@title@format{\thu@@name}{\thu@@title}%
 }
 % 中文首页
-%TODO!! 以下是生成苏大论文封面，但是有错误不启用
+%TODO!! 以下是生成苏大论文封面
 % 单位代码
 % 首页需要的额外代码
 \def\suda@unicode{1006}
@@ -2441,7 +2425,7 @@
         \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@title}} \\ %[.4ex]%\hline
         \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@subtitle}} \\
         \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\rmfamily{\thu@title@en}} \\%[.4ex]
-        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@subtitle@en}} \\%[.4ex]
+        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\rmfamily{\thu@subtitle@en}} \\%[.4ex]
       \end{tabular}
       \vskip 20bp
       ~~\\
@@ -2477,7 +2461,7 @@
   \end{minipage}
   \vspace*{\stretch{1}}
   ~~\\
-    {\zihao{4}A Dissertation Submitted for the Degree of \thu@degree@name@en}\\
+    {\zihao{4}A Dissertation Submitted for the Degree of \thu@degree@category@en}\\
     \vskip 110bp
     \begin{center}
       \xiaosan
@@ -2514,12 +2498,24 @@
   \ifthu@degree@graduate
     \ifthu@thesis@type@thesis
       \ifthu@degree@type@academic
-        \thu@titlepage@graduate@academic
-      \else
-        \ifx\thu@discipline\@empty
-          \thu@titlepage@graduate@professional
+        \ifthu@degree@doctor
+          \thu@titlepage@doctor@academic
         \else
-          \thu@titlepage@graduate@academic
+          \thu@titlepage@master@academic
+        \fi
+      \else
+        \ifthu@degree@doctor
+          \thu@titlepage@doctor@professional
+        \else
+          \ifx\thu@professional@field\@empty
+            \ifx\thu@engineering@field\@empty
+              \thu@titlepage@master@professional@without@field
+            \else
+              \thu@titlepage@master@professional@with@field
+            \fi
+          \else
+            \thu@titlepage@master@professional@with@field
+          \fi
         \fi
       \fi
     \else
@@ -2540,7 +2536,7 @@
   \fi
   \thu@reset@main@language
 }
-\newcommand\thu@titlepage@graduate@academic{%
+\newcommand\thu@titlepage@doctor@academic{%
   \newgeometry{
     top     = 2cm,
     bottom  = 6cm,
@@ -2568,10 +2564,10 @@
       \vskip -9.2pt%
     \fi
     \vskip 24.1pt%
-    \thu@titlepage@degree
+    \thu@titlepage@degree\par
     \vfill
     \parbox[t][7.25cm][t]{\textwidth}{%
-      \centering\fangsong\fontsize{16bp}{31.2bp}\selectfont
+      \fangsong\fontsize{16bp}{31.2bp}\selectfont
       \thu@titlepage@info
     }\par
     \parbox[t][1.03cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
@@ -2579,7 +2575,7 @@
   \clearpage
   \restoregeometry
 }
-\newcommand\thu@titlepage@graduate@professional{%
+\newcommand\thu@titlepage@doctor@professional{%
   \newgeometry{
     top     = 2cm,
     bottom  = 6cm,
@@ -2610,11 +2606,160 @@
     \vskip 25.5pt%
     \thu@titlepage@degree
     \vfill
-    \parbox[t][5.24cm][t]{\textwidth}{%
-      \centering\fangsong\fontsize{16bp}{1cm}\selectfont
+    \parbox[b][5.24cm][b]{\textwidth}{%
+      \fangsong\fontsize{16bp}{1cm}\selectfont
       \thu@titlepage@info
     }\par
-    \parbox[t][1.25cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
+    \vskip 2.22cm%
+    \parbox[t][1.0cm][t]{\textwidth}{\centering\thu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+\newcommand\thu@titlepage@master@academic{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 10bp%
+  \begingroup
+    \centering
+    \parbox[t][55bp][t]{\textwidth}{%
+      \hskip -23bp%
+      \thu@titlepage@secret
+    }\par
+    \vskip 34pt%
+    \begingroup
+      % 1.21 倍行距
+      \sffamily\fontsize{26bp}{40.898bp}\selectfont
+      \thu@title\par
+    \endgroup
+    \ifthu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \thu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 18pt%
+    \thu@titlepage@degree\par
+    \vfill
+    \parbox[t][7.05cm][t]{\textwidth}{%
+      % 表格行高 1cm = 28.35bp
+      \fangsong\fontsize{16bp}{28.35bp}\selectfont
+      \thu@titlepage@info
+    }\par
+    \parbox[t][37bp][t]{\textwidth}{\centering\thu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+\newcommand\thu@titlepage@master@professional@without@field{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 15bp%
+  \begingroup
+    \centering
+    \parbox[t][41bp][t]{\textwidth}{%
+      \hskip -23bp%
+      \thu@titlepage@secret
+    }\par
+    \vskip 1.5cm%
+    \begingroup
+      % 1.21 倍行距，无网格
+      \sffamily\fontsize{26bp}{40.9bp}\selectfont
+      \thu@title\par
+    \endgroup
+    \ifthu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \thu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 25.5pt%
+    \thu@titlepage@degree
+    \vfill
+    \parbox[b][5.24cm][b]{\textwidth}{%
+      \fangsong\fontsize{16bp}{1cm}\selectfont
+      \thu@titlepage@info
+    }\par
+    \vskip 2.22cm%
+    \parbox[t][35.5bp][t]{\textwidth}{\centering\thu@titlepage@date}\par
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+\newcommand\thu@titlepage@master@professional@with@field{%
+  \newgeometry{
+    top     = 2cm,
+    bottom  = 6cm,
+    hmargin = 3.5cm,
+  }%
+  \thispagestyle{empty}%
+  \null\vskip 10bp%
+  \begingroup
+    \centering
+    \parbox[t][46bp][t]{\textwidth}{%
+      \hskip -23bp%
+      \thu@titlepage@secret
+    }\par
+    \vskip 1.5cm%
+    \begingroup
+      % 1.21 倍行距，无网格
+      \sffamily\fontsize{26bp}{40.9bp}\selectfont
+      \thu@title\par
+    \endgroup
+    \ifthu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \thu@title@en\par
+      \endgroup
+      \vskip -9.2pt%
+    \fi
+    \vskip 25.5pt%
+    \thu@titlepage@degree
+    \vskip 119bp%
+    \parbox[b][5.24cm][b]{\textwidth}{%
+      \fangsong\fontsize{16bp}{31bp}\selectfont
+      \renewcommand\thu@info@item@format[2]{%
+        \begingroup
+          \renewcommand\CJKglue{\hspace{##1}}%
+          ##2%
+        \endgroup
+      }%
+      \renewcommand\thu@name@title@format[2]{%
+        % 字距 9bp，共 16bp * 3 + 9bp * 2 = 66bp
+        \thu@stretch{66bp}{##1}%
+        \hspace{22bp}%
+        % 字距 6bp
+        \begingroup
+          \renewcommand\CJKglue{\hspace{16bp}}%
+          ##2%
+        \endgroup
+      }%
+      \thu@titlepage@info@tabular{65bp}{86.5bp}{81bp}{30.5bp}{%
+        \thu@info@item{培养单位}{\thu@info@item@format{1bp}}{\thu@department}%
+        \thu@info@item{专业领域}{\thu@info@item@format{2bp}}{\thu@professional@field}%
+        \thu@info@item{工程领域}{\thu@info@item@format{2bp}}{\thu@engineering@field}%
+        \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+        \thu@info@item{学号}{}{\thu@student@id}%
+        \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
+        \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
+        \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
+      }\par
+    }\par
+    \vfill
+    \parbox[t][33.5bp][t]{\textwidth}{\centering\thu@titlepage@date}\par
   \endgroup
   \clearpage
   \restoregeometry
@@ -2669,7 +2814,7 @@
   \ifx\thu@secret@level\@empty
     \phantom{秘密}%
   \else
-    \thu@secret@level★\makebox[3em][c]{\thu@secret@year}年%
+    \thu@secret@level\symbol{"2605}\makebox[3em][c]{\thu@secret@year}年%
   \fi\par
 }
 \newcommand\thu@titlepage@degree{%
@@ -2683,7 +2828,7 @@
       \renewcommand\CJKglue{\hspace{1bp}}%
     \fi
     \ifthu@thesis@type@thesis
-      (申请苏州大学\thu@degree@name
+      (申请苏州大学\thu@degree@category
       \ifthu@degree@type@professional
         专业%
       \fi
@@ -2715,29 +2860,35 @@
     \ifthu@degree@type@academic
       \thu@titlepage@info@master@academic
     \else
-      \ifx\thu@discipline\@empty
-        \thu@titlepage@info@master@other
+      \ifx\thu@professional@field\@empty
+        \ifx\thu@engineering@field\@empty
+          \thu@titlepage@info@master@professional@without@field
+        \else
+          \thu@titlepage@info@master@professional@with@field
+        \fi
       \else
-        \thu@titlepage@info@master@engineer
+        \thu@titlepage@info@master@professional@with@field
       \fi
     \fi
   \fi
 }
-\newcommand\thu@titlepage@info@tabular[4]{%
+\newcommand\thu@titlepage@info@tabular[5]{%
   \def\thu@info@item##1##2##3{%
     \ifx##3\@empty\else
-      \thu@pad{#1}{\thu@fixed@box{#2}{##1}}%
-      \thu@pad{#3}{：}%
+      \thu@pad{#2}{\thu@fixed@box{#3}{##1}}%
+      \thu@pad{#4}{：}%
       ##2{##3}\\
     \fi
   }%
+  \hspace{#1}%
   \begin{tabular}{l}%
     \renewcommand\arraystretch{1}%
-    #4%
+    #5%
   \end{tabular}%
 }
+\newcommand\thu@info@item@format[1]{#1}
 \newcommand\thu@titlepage@info@doctor@academic{%
-  \thu@titlepage@info@tabular{2.8cm}{2.8cm}{0.82cm}{%
+  \thu@titlepage@info@tabular{2.3cm}{2.85cm}{2.75cm}{0.77cm}{%
     \thu@info@item{培养单位}{}{\thu@department}%
     \thu@info@item{学科}{}{\thu@discipline}%
     \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
@@ -2748,19 +2899,35 @@
   }\par
 }
 \newcommand\thu@titlepage@info@doctor@professional{%
-  \thu@titlepage@info@tabular{3.03cm}{5em}{1.52cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
+  \thu@titlepage@info@tabular{2.3cm}{3.1cm}{5em}{1.42cm}{%
+    \thu@info@item{培养单位}{}{{\thu@department}}%
     \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合导师}{\thu@name@title}{\thu@co@supervisor}%
+    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
 \newcommand\thu@titlepage@info@master@academic{%
-  \thu@titlepage@info@tabular{3.59cm}{5.5em}{0.82cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{学科}{}{\thu@discipline}%
+  \renewcommand\thu@info@item@format[2]{%
+    \begingroup
+      \renewcommand\CJKglue{\hspace{##1}}%
+      ##2%
+    \endgroup
+  }
+  \renewcommand\thu@name@title@format[2]{%
+    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
+    \thu@stretch{67.6bp}{##1}%
+    \hspace{9.8bp}%
+    % 字距 6bp
+    \begingroup
+      \renewcommand\CJKglue{\hspace{6bp}}%
+      ##2%
+    \endgroup
+  }%
+  \thu@titlepage@info@tabular{58bp}{3.59cm}{5.5em}{0.82cm}{%
+    \thu@info@item{培养单位}{\thu@info@item@format{1bp}}{\thu@department}%
+    \thu@info@item{学科}{\thu@info@item@format{2bp}}{\thu@discipline}%
     \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
@@ -2768,10 +2935,25 @@
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
-\newcommand\thu@titlepage@info@master@engineer{%
-  \thu@titlepage@info@tabular{2.8cm}{2.8cm}{1.34cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{工程领域}{}{\thu@discipline}%
+\newcommand\thu@titlepage@info@master@professional@without@field{%
+  \renewcommand\thu@info@item@format[2]{%
+    \begingroup
+      \renewcommand\CJKglue{\hspace{##1}}%
+      ##2%
+    \endgroup
+  }
+  \renewcommand\thu@name@title@format[2]{%
+    % 字距 9.8bp，共 16bp * 3 + 9.8bp * 2 = 67.5bp
+    \thu@stretch{67.6bp}{##1}%
+    \hspace{9.8bp}%
+    % 字距 6bp
+    \begingroup
+      \renewcommand\CJKglue{\hspace{6bp}}%
+      ##2%
+    \endgroup
+  }%
+  \thu@titlepage@info@tabular{58bp}{3.28cm}{5em}{1.52cm}{%
+    \thu@info@item{培养单位}{\thu@info@item@format{1bp}}{\thu@department}%
     \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
     \thu@info@item{学号}{}{\thu@student@id}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
@@ -2779,15 +2961,7 @@
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   }\par
 }
-\newcommand\thu@titlepage@info@master@other{%
-  \thu@titlepage@info@tabular{3.28cm}{5em}{1.52cm}{%
-    \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
-    \thu@info@item{学号}{}{\thu@student@id}%
-    \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
-  }\par
+\newcommand\thu@titlepage@info@master@professional@with@field{%
 }
 \newcommand\thu@titlepage@date{%
   \begingroup
@@ -2804,7 +2978,7 @@
   \newgeometry{
     top     = 5.5cm,
     bottom  = 5cm,
-    hmargin = 3.6cm,
+    hmargin = 3.4cm,
   }%
   \thispagestyle{empty}%
   \thusetup{language = english}%
@@ -2820,49 +2994,51 @@
 \newcommand\thu@titlepage@en@graduate@academic{%
   \begingroup
     \centering
-    \null\vskip -0.7cm%
-    \thu@titlepage@en@title
-    \vfill
+    \null\vskip -0.31cm%
+    \parbox[t][143bp][t]{\textwidth}{%
+      \centering\thu@titlepage@en@title
+    }\par
     \sanhao[1.725]%
     \thu@titlepage@en@degree
-    \vskip 0.13cm%
+    \vskip 3bp%
     in\par
-    \vskip 0.1cm%
+    \vskip 3.5bp%
     {\bfseries\sffamily\thu@discipline@en\par}
-    \vskip 0.7cm%
+    \vfill
     {\sffamily by\par}
     \vskip 0.24cm%
     {\sffamily\bfseries\thu@author@en\par}%
-    \vskip 0.14cm%
-    \parbox[t][3.07cm][t]{\textwidth}{%
-      \centering\xiaosan[2.1]%
+    \vskip 0.18cm%
+    \parbox[t][3.0cm][t]{\textwidth}{%
+      \xiaosan[2.1]%
       \thu@titlepage@en@supervisor
     }\par
     \thu@titlepage@en@date
-    \vskip 0.65cm%
+    \vskip 0.7cm%
   \endgroup
 }
 \newcommand\thu@titlepage@en@graduate@professional{%
   \begingroup
     \centering
-    \null\vskip -0.7cm%
-    \thu@titlepage@en@title
-    \vfill
+    \null\vskip -0.31cm%
+    \parbox[t][143bp][t]{\textwidth}{%
+      \centering\thu@titlepage@en@title
+    }\par
     \sanhao[1.725]%
     \thu@titlepage@en@degree
-    \vskip 1.1cm%
+    \vfill
     {\sffamily by\par}
     \vskip 0.24cm%
     {\sffamily\bfseries\thu@author@en\par}%
-    \ifx\thu@discipline@en\empty
+    \ifx\thu@professional@field@en\empty
       \vskip 1.95cm%
     \else
       \vskip -0.1cm%
-      {\sffamily\bfseries(\thu@discipline@en)\par}%
+      {\sffamily\bfseries(\thu@professional@field@en)\par}%
       \vskip 1.1cm%
     \fi
     \parbox[t][3.37cm][t]{\textwidth}{%
-      \centering\xiaosan[1.82]%
+      \xiaosan[1.82]%
       \thu@titlepage@en@supervisor
     }\par
     \thu@titlepage@en@date
@@ -2871,7 +3047,8 @@
 }
 \newcommand\thu@titlepage@en@title{%
   \begingroup
-    \sffamily\bfseries\fontsize{20bp}{31bp}\selectfont
+    % 对齐到网格，每行 15.6bp
+    \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
     \thu@title@en\par
   \endgroup
 }
@@ -2891,10 +3068,11 @@
     professional
   \fi
   degree of\par
-  {\sffamily\bfseries\thu@degree@name@en\par}%
+  {\sffamily\bfseries\thu@degree@category@en\par}%
 }
 \newcommand\thu@titlepage@en@supervisor{%
-  \begin{tabular}{r@{\makebox[0.71cm][l]{:}}l}%
+  \hspace{1.27cm}%
+  \begin{tabular}{r@{\makebox[20.5bp][l]{\hspace{2bp}:}}l}%
     \renewcommand\arraystretch{1}%
     \thu@thesis@name@en{} Supervisor & \thu@supervisor@en \\
     \ifx\thu@associate@supervisor@en\@empty\else
@@ -3270,6 +3448,7 @@
     \textbf{关键词：}%
   \fi
   \thu@clist@use{\thu@keywords}{；}%
+  \gdef\thu@keywords{}%
   \ifthu@degree@graduate
     \par
     \null\par
@@ -3354,6 +3533,7 @@
 \newcommand{\thu@backdate}{日\hspace{1em}期：}
 \newenvironment{acknowledgements}{%
   \@mainmatterfalse
+  \thu@end@appendix@ref@section
   \ifthu@degree@bachelor
     \cleardoublepage
   \fi
@@ -3396,6 +3576,7 @@
 \newif\ifthu@statement@exists
 \newcommand\statement[1][]{%
   \@mainmatterfalse
+  \thu@end@appendix@ref@section
   \thu@statement@existstrue
   \ifthu@degree@bachelor
     \cleardoublepage
@@ -3518,16 +3699,33 @@
   {\thu@equation@name~\thecontentslabel}{}
   {\nobreak\thu@leaders\nobreak\thecontentspage}
 \contentsuse{equation}{loe}
-  \thu@define@key{
-    cite-style = {
-      name = cite@style,
-      choices = {
-        super,
-        inline,
-        author-year,
-      }
+\thu@define@key{
+  cite-style = {
+    name = cite@style,
+    choices = {
+      super,
+      inline,
+      author-year,
     }
   }
+}
+\def\bibliographystyle#1{%
+  \gdef\bu@bibstyle{#1}%
+  \ifx\@begindocumenthook\@undefined\else
+    \expandafter\AtBeginDocument
+  \fi
+    {\if@filesw
+       \immediate\write\@auxout{\string\bibstyle{#1}}%
+       \immediate\write\@auxout{\string\gdef\string\bu@bibstyle{#1}}%
+     \fi}%
+}
+\def\bibliography#1{%
+  \if@filesw
+    \immediate\write\@auxout{\string\bibdata{\zap@space#1 \@empty}}%
+    \immediate\write\@auxout{\string\gdef\string\bu@bibdata{#1}}%
+  \fi
+  \gdef\bu@bibdata{#1}%
+  \@input@{\jobname.bbl}}
 \PassOptionsToPackage{compress}{natbib}
 \AtEndOfPackageFile*{natbib}{
   \DeclareRobustCommand\inlinecite{\@inlinecite}
@@ -3915,6 +4113,56 @@
     appendix-figure-in-lof = false,
   }%
 }
+\newcommand\thu@end@appendix@ref@section{}
+\AtEndOfPackageFile*{bibunits}{
+  \ifthu@degree@graduate
+    \newcommand\thu@appendix@bib@num@format[1]{[\@Alph\c@chapter.#1]\hfill}
+    \g@addto@macro\appendix{%
+      \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
+      \bibliographyunit[\chapter]%
+      \renewcommand\citenumfont{\@Alph\c@chapter.}%
+      \renewcommand\bibsection{%
+        \ctexset{section/numbering = false}%
+        \section{\bibname}%
+        \ctexset{section/numbering = true}%
+      }%
+      \renewcommand\@extra@binfo{@-\@alph\c@chapter}%
+      \renewcommand\@extra@b@citeb{@-\@alph\c@chapter}%
+      \let\bibnumfmt\thu@appendix@bib@num@format
+      \let\bibliographystyle\defaultbibliographystyle
+      \let\bibliography\thu@appendix@bibliography
+    }
+    \renewcommand\thu@end@appendix@ref@section{%
+      \bibliographyunit\relax
+    }
+    \providecommand\printbibliography{\putbib\relax}%
+    \AtEndDocument{\thu@end@appendix@ref@section}
+    % \let\@xtestdef\@gobbletwo  % This doesn't work
+    \def\bibunits@rerun@warning{\relax}
+  \fi
+}
+\PassOptionsToPackage{defernumbers = true}{biblatex}
+\AtEndOfPackageFile*{biblatex}{
+  \ifthu@degree@graduate
+    \DeclareRefcontext{appendix}{}
+    \g@addto@macro\appendix{%
+      \pretocmd\chapter{%
+        \newrefsection
+        \@tempcnta=\c@chapter
+        \advance\@tempcnta\@ne
+        \newrefcontext[labelprefix = {\@Alph\@tempcnta.}]{appendix}%
+      }{}{\thu@patch@error{\chapter}}%
+      \defbibheading{bibliography}[\bibname]{%
+        \ctexset{section/numbering = false}%
+        \section{#1}%
+        \ctexset{section/numbering = true}%
+      }%
+    }
+    % \renewcommand\thu@end@appendix@ref@section{%
+    %   \endrefsection
+    % }
+  \fi
+}
 \@ifpackagelater{titletoc}{2019/07/14}{
   \newcommand\thu@print@contents[5]{%
     \printcontents[#1]{#2}{#3}[#4]{}%
@@ -3962,9 +4210,11 @@
       },
     }%
     \section{摘要}%
-    \quotation
   }{%
-    \endquotation
+    \par
+    \ifx\thu@keywords\@empty\else
+      \textbf{关键词：}\thu@clist@use{\thu@keywords}{；}\par
+    \fi
   }%
   \thu@set@partial@toc@format
   \renewcommand\tableofcontents{%
@@ -4039,6 +4289,7 @@
 \newcommand\thu@appendix@bibliography[1]{\putbib[#1]}
 \newenvironment{resume}{%
   \@mainmatterfalse
+  \thu@end@appendix@ref@section
   \thu@chapter*{\thu@resume@name}%
   \ctexset{
     section = {
@@ -4055,13 +4306,18 @@
       },
     }%
     \setlist[achievements]{
-      topsep      = 6bp,
-      itemsep     = 6bp,
-      leftmargin  = 1cm,
-      labelwidth  = 1cm,
-      labelsep    = 0pt,
-      align       = left,
-      label       = [\arabic*],
+      topsep     = 6bp,
+      itemsep    = 6bp,
+      leftmargin = 1cm,
+      labelwidth = 1cm,
+      labelsep   = 0pt,
+      first      = {
+        \ifthu@degree@graduate
+          \fontsize{12bp}{16bp}\selectfont
+        \fi
+      },
+      align      = left,
+      label      = [\arabic*],
       resume     = achievements,
     }%
   \else
@@ -4079,12 +4335,12 @@
       \sffamily\fontsize{15bp}{20bp}\selectfont
     \fi
     \setlist[achievements]{
-      topsep      = 0bp,
-      itemsep     = 0bp,
-      leftmargin  = 1.75cm,
-      labelsep    = 0.5cm,
-      align       = right,
-      label       = [\arabic*],
+      topsep     = 0bp,
+      itemsep    = 0bp,
+      leftmargin = 1.75cm,
+      labelsep   = 0.5cm,
+      align      = right,
+      label      = [\arabic*],
       resume     = achievements,
     }%
   \fi
@@ -4117,6 +4373,7 @@
   \thu@error{The "\protect\publicationskip" is obsolete. Do not use it}%
 }
 \NewEnviron{comments}[1][]{%
+  \thu@end@appendix@ref@section
   \ifthu@degree@graduate
     \@mainmatterfalse
     \kv@define@key{thu@comments}{name}{\let\thu@comments@name\kv@value}%
@@ -4133,6 +4390,7 @@
   \fi
 }
 \NewEnviron{resolution}{%
+  \thu@end@appendix@ref@section
   \ifthu@degree@graduate
     \@mainmatterfalse
     \chapter{\thu@resolution@name}%
@@ -4157,21 +4415,21 @@
   \thu@pdfbookmark{0}{综合论文训练记录表}%
   \includepdf[pages=-]{\thu@record@file}%
 }
+\PassOptionsToPackage{
+  linktoc            = all,
+  bookmarksdepth     = 2,
+  bookmarksnumbered  = true,
+  bookmarksopen      = true,
+  bookmarksopenlevel = 1,
+  bookmarksdepth     = 3,
+  unicode            = true,
+  psdextra           = true,
+  breaklinks         = true,
+  plainpages         = false,
+  pdfdisplaydoctitle = true,
+  hidelinks,
+}{hyperref}
 \AtEndOfPackageFile*{hyperref}{
-  \hypersetup{
-    linktoc            = all,
-    bookmarksdepth     = 2,
-    bookmarksnumbered  = true,
-    bookmarksopen      = true,
-    bookmarksopenlevel = 1,
-    bookmarksdepth     = 3,
-    unicode            = true,
-    psdextra           = true,
-    breaklinks         = true,
-    plainpages         = false,
-    pdfdisplaydoctitle = true,
-    hidelinks,
-  }%
   \newcounter{thu@bookmark}
   \renewcommand\thu@pdfbookmark[2]{%
     \phantomsection
@@ -4204,14 +4462,14 @@
       \hypersetup{
         pdftitle    = \thu@title,
         pdfauthor   = \thu@author,
-        pdfsubject  = \thu@degree@name,
+        pdfsubject  = \thu@degree@category,
         pdfkeywords = \thu@keywords,
       }%
     \else
       \hypersetup{
         pdftitle    = \thu@title@en,
         pdfauthor   = \thu@author@en,
-        pdfsubject  = \thu@degree@name@en,
+        pdfsubject  = \thu@degree@category@en,
         pdfkeywords = \thu@keywords@en,
       }%
     \fi

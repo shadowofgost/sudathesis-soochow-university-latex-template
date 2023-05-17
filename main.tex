@@ -3,8 +3,8 @@
 %% @Time             : 2023-01-08 21:21:02
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
-%% @FilePath         : /Sudathesis-Bachelor-Template/main.tex
-%% @LastTime         : 2023-05-07 17:11:28
+%% @FilePath         : /sudathesis-soochow-university-latex-template/main.tex
+%% @LastTime         : 2023-05-18 01:27:05
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -13,7 +13,7 @@
 % !TeX program = xelatex
 % !TeX spellcheck = en_US
 
-\documentclass[degree=master,fonset=windows,print-style=twoside]{sudathesis}
+\documentclass[degree=master,print-style=twoside]{sudathesis}
   % 学位 degree:
   %   doctor | master | bachelor | postdoc
   % 学位类型 degree-type:
@@ -37,13 +37,13 @@
 \begin{document}
 
 % 封面，使用清华原版的封面
-%\maketitle
+\maketitle
 % 插入封面，针对苏大本科生毕业论文
 %\includepdf[pages={1}]{./figures/cover.pdf}
 % 生成封面，针对苏大研究生毕业论文中文版
-%\titlech
+\titlech
 % 生成封面，针对苏大研究生毕业论文英文版
-%\titleeng
+\titleeng
 % 学位论文指导小组、公开评阅人和答辩委员会名单
 % 本科生不需要
 %\input{data/committee}
@@ -117,6 +117,7 @@
 \appendix
 % \input{contents/appendix-survey}       % 本科生：外文资料的调研阅读报告
 % \input{contents/appendix-translation}  % 本科生：外文资料的书面翻译
+% TODO！本科生启用appendix请勿启用参考文献section，会出现报错，硕博请自行评估是否需要来启用
 \input{contents/appendix}
 
 % 致谢
