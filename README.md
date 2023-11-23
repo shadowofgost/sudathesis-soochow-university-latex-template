@@ -3,8 +3,8 @@
  #  @Time             : 2023-01-04 13:42:01
  #  @Description      :
  #  @Email            : shadowofgost@outlook.com
- #  @FilePath         : /Sudathesis-Bachelor-Template/README.md
- #  @LastTime         : 2023-05-11 12:34:48
+ #  @FilePath         : /sudathesis-soochow-university-latex-template/README.md
+ #  @LastTime         : 2023-11-23 20:18:24
  #  @LastAuthor       : Albert Wang
  #  @Software         : Vscode
  #  @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -14,20 +14,20 @@
 ![readme](https://img.shields.io/badge/standard-readme-brightgreen)
 ![XeLaTex](https://img.shields.io/badge/XeLaTex-pass-brightgreen)
 ![overleaf](https://img.shields.io/badge/overleaf-pass-brightgreen)
+
 # Sudathesis-Bachelor-Template
 
 Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大学毕业论文LaTex模板，适用于本科、硕士和博士还有日常论文写作，基于[清华大学学位论文 LaTeX 模板](https://github.com/tuna/thuthesis)打造
-
 
 ## 简介
 
 本模板是为了方便苏州大学本科生、硕士生、博士生毕业论文和日常论文的撰写而制作的LaTex模板，适配`苏州大学本科毕业设计（论文）装订及打印格式（2020 版）`和`苏州大学研究生学位论文基本格式（2018版）`的要求
 
-
 **希望本模板能够帮助到你！**
 **也希望有识之士能参与贡献搭建苏州大学的Latex模板（涵盖本硕博毕业论文以及日常论文的latex模板）**
 
 本模板是使用[清华大学学位论文 LaTeX 模板](https://github.com/tuna/thuthesis)的发布版本修改而成，开发版见原版内容。
+
 * 发布版：
   * [GitHub Releases](https://github.com/shadowofgost/sudathesis-soochow-university-latex-template/releases)：最新版的及时发布途径。
   <!--:
@@ -56,6 +56,7 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 * overleaf上字体输出效果与windows版本有区别，在不同平台字体输出效果与windows版本有区别不是正常的word版本的宋体黑体楷体。
 
 ## 相关文件文件夹介绍
+
 * **模板的初始状态就介绍了模板的使用教程，help文件夹中的help.pdf是使用教程的编译结果，如有问题请参考教程**
 * `.vscode`：存放着vscode的插件`LaTeX Workshop`的配置文件
 * `bibstyle`：参考文献的样式设置
@@ -71,7 +72,8 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 * `help.pdf`：帮助文档，里面有详细的关于模板的使用说明，可以参考相关的tex文件比对查看
 
 ## 使用方法
-1.  下载 最新的release 文件
+
+1. 下载 最新的release 文件
 2. 在`overleaf.com` 中 `New Project -> Upload Project -> select a .zip file`, 上传刚才下载的zip文件
 3. 在左上角 `Menu -> Compiler` 中选择编译器为XeLaTex， 然后右上角ReCompile
 
@@ -83,17 +85,16 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 ## 进阶
 
 * 如果有以下情况：
-    * 对`overleaf.com`网站在线编译的速度有要求
-    * 对文章内容隐私性有要求
-    * 梯子不快的同学，可以考虑在内网的强悍服务器上搭建一个[本地的Overleaf平台](https://github.com/overleaf/overleaf)，现已支持docker
-
+  * 对`overleaf.com`网站在线编译的速度有要求
+  * 对文章内容隐私性有要求
+  * 梯子不快的同学，可以考虑在内网的强悍服务器上搭建一个[本地的Overleaf平台](https://github.com/overleaf/overleaf)，现已支持docker
 
 ## 相关仓库
 
-- [sudathesis](https://github.com/huhamhire/sudathesis) — LaTeX template for bachelor's thesis in Soochow University
-- [SUDA-Latex](https://github.com/hinesboy/SUDA-Latex) — 苏州大学-硕士毕业大论文-Latex模版（附安装使用说明）
-- [Overleaf](https://github.com/overleaf/overleaf) - A web-based collaborative LaTeX editor
-- [Soochow-University-Thesis-Overleaf-LaTeX-Template](https://github.com/tianhaoo/Soochow-University-Thesis-Overleaf-LaTeX-Template)。-苏州大学-硕士生毕业论文模板
+* [sudathesis](https://github.com/huhamhire/sudathesis) — LaTeX template for bachelor's thesis in Soochow University
+* [SUDA-Latex](https://github.com/hinesboy/SUDA-Latex) — 苏州大学-硕士毕业大论文-Latex模版（附安装使用说明）
+* [Overleaf](https://github.com/overleaf/overleaf) - A web-based collaborative LaTeX editor
+* [Soochow-University-Thesis-Overleaf-LaTeX-Template](https://github.com/tianhaoo/Soochow-University-Thesis-Overleaf-LaTeX-Template)。-苏州大学-硕士生毕业论文模板
 
 ## 维护者
 
@@ -104,7 +105,6 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 非常欢迎你的加入！[提一个 Issue](https://github.com/shadowofgost/sudathesis-soochow-university-latex-template/issues) 或者提交一个 Pull Request。
 
 Sudathesis-Bachelor-Template 遵循 [Contributor Covenant](http://contributor-covenant.org/version/1/3/0/) 行为规范。
-
 
 ## 使用许可
 
