@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2023-05-18 00:03:27
+%% @LastTime         : 2023-12-25 19:00:44
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -306,6 +306,14 @@
       twoside,
     },
     default = twoside,
+  },
+  sequence-style = {
+    name=book@sequencestyle,
+    choices = {
+      science,
+      liberal,
+    },
+    default = science,
   },
 }
 \newif\ifthu@degree@graduate
@@ -1928,12 +1936,33 @@
       },
     }%
     \ifthu@main@language@chinese
-      \ctexset{
-        chapter = {
-          name   = {第,章},
-          number = \thechapter,
-        },
-      }%
+      \ifthu@book@sequencestyle@science
+        \ctexset{
+          chapter = {
+            name   = {第,章},
+            number = \thechapter,
+          },
+        }%
+      \else
+        \ctexset{
+          chapter = {
+            name   = {第,章},
+            number = \chinese{chapter},
+          },
+          section = {
+            name   = {第,节},
+            number = \chinese{section},
+          },
+          subsection = {
+            name   = {,、},
+            number = \chinese{subsection},
+          },
+          subsubsection = {
+            name   = {（,）},
+            number = \chinese{subsubsection},
+          },
+        }%
+      \fi
     \else
       \ctexset{
         chapter = {
@@ -1970,12 +1999,33 @@
       },
     }%
     \ifthu@main@language@chinese
-      \ctexset{
-        chapter = {
-          name   = {第,章},
-          number = \thechapter,
-        },
-      }%
+      \ifthu@book@sequencestyle@science
+        \ctexset{
+          chapter = {
+            name   = {第,章},
+            number = \thechapter,
+          },
+        }%
+      \else
+        \ctexset{
+          chapter = {
+            name   = {第,章},
+            number = \chinese{chapter},
+          },
+          section = {
+            name   = {第,节},
+            number = \chinese{section},
+          },
+          subsection = {
+            name   = {,、},
+            number = \chinese{subsection},
+          },
+          subsubsection = {
+            name   = {（,）},
+            number = \chinese{subsubsection},
+          },
+        }%
+      \fi
     \else
       \ctexset{
         chapter = {
