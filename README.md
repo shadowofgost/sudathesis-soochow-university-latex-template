@@ -104,8 +104,15 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 
 非常欢迎你的加入！[提一个 Issue](https://github.com/shadowofgost/sudathesis-soochow-university-latex-template/issues) 或者提交一个 Pull Request。
 
+如果发现学校论文格式标准的内容有更新，可以及时提一个issue
+
 sudathesis-soochow-university-latex-template 遵循 [Contributor Covenant](http://contributor-covenant.org/version/1/3/0/) 行为规范。
 
 ## 使用许可
 
 [LPPL 1.3c](LICENSE) © shadowofgost
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=shadowofgost/sudathesis-soochow-university-latex-template&type=Date)](https://star-history.com/#shadowofgost/sudathesis-soochow-university-latex-template&Date)
+
