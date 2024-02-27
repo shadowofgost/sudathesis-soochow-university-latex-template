@@ -15,7 +15,7 @@
 ![XeLaTex](https://img.shields.io/badge/XeLaTex-pass-brightgreen)
 ![overleaf](https://img.shields.io/badge/overleaf-pass-brightgreen)
 
-# Sudathesis-Bachelor-Template
+# sudathesis-soochow-university-latex-template
 
 Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大学毕业论文LaTex模板，适用于本科、硕士和博士还有日常论文写作，基于[清华大学学位论文 LaTeX 模板](https://github.com/tuna/thuthesis)打造
 
