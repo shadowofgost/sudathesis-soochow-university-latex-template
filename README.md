@@ -104,7 +104,7 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 
 非常欢迎你的加入！[提一个 Issue](https://github.com/shadowofgost/sudathesis-soochow-university-latex-template/issues) 或者提交一个 Pull Request。
 
-Sudathesis-Bachelor-Template 遵循 [Contributor Covenant](http://contributor-covenant.org/version/1/3/0/) 行为规范。
+sudathesis-soochow-university-latex-template 遵循 [Contributor Covenant](http://contributor-covenant.org/version/1/3/0/) 行为规范。
 
 ## 使用许可
 
