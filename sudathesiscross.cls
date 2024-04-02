@@ -1,21 +1,21 @@
 %%
 %% @Author           : Albert Wang
-%% @Time             : 2023-01-08 21:21:01
+%% @Time             : 2024-04-02 17:41:36
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
-%% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-04-02 17:49:55
+%% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis-cross.cls
+%% @LastTime         : 2024-04-02 18:06:40
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
-%% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
+%% @ Copyright Notice : Copyright (c) 2024 Albert Wang 王子睿, All Rights Reserved.
 %%
 %%
-%% This is file `sudathesis.cls',
+%% This is file `sudathesiscross.cls',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% sudathesis.dtx  (with options: `cls')
+%% sudathesiscross.dtx  (with options: `cls')
 %%
 %% This is a generated file.
 %%
@@ -34,16 +34,16 @@
 %%
 %%% TODO 以下被suda替换
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
-\ProvidesClass{sudathesis}
+\ProvidesClass{sudathesiscross}
 [2023/05/17 2.2.0 Soochow University Thesis Template]
 \newcommand\thu@error[1]{%
-  \ClassError{sudathesis}{#1}{}%
+  \ClassError{sudathesiscross}{#1}{}%
 }
 \newcommand\thu@warning[1]{%
-  \ClassWarning{sudathesis}{#1}%
+  \ClassWarning{sudathesiscross}{#1}%
 }
 \newcommand\thu@debug[1]{%
-  \typeout{Package sudathesis Info: #1}%
+  \typeout{Package sudathesiscross Info: #1}%
 }
 %%% TODO:以上是suda替换更改
 \newcommand\thu@patch@error[1]{%
@@ -74,7 +74,7 @@
 }
 \hyphenation{Thu-Thesis}
 %%% TODO以下被更改
-\def\sudathesis{ThuThesis}
+\def\sudathesiscross{ThuThesis}
 \def\version{2.2.0}
 %%%  TODO：以上被更改
 \RequirePackage{kvdefinekeys}
@@ -1008,16 +1008,17 @@
 \newfontfamily\zititime{Times New Roman}%TODO: 主要是标记此处更改，添加Times New Roman的宏语言
 %%%% TODO：以下被更改
 \newcommand\thu@set@cjk@font@windows{%
-  \setCJKmainfont{SimSun}[
+  \setCJKmainfont[
     AutoFakeBold = 3,
-    ItalicFont   = KaiTi,
-  ]%
-  \setCJKsansfont{SimHei}[AutoFakeBold = 3]%
-  \setCJKmonofont{FangSong}%
-  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold = 3]%
-  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold = 3]%
-  \setCJKfamilyfont{zhkai}{KaiTi}%
-  \setCJKfamilyfont{zhfs}{FangSong}%
+    ItalicFont   = simkai.ttf,
+    Path=fonts/
+  ]{simsun.ttc}%
+  \setCJKsansfont[AutoFakeBold = 3,Path=fonts/]{simhei.ttf}%
+  \setCJKmonofont[AutoFakeBold = 3,Path=fonts/]{simfang.ttf}%
+  \setCJKfamilyfont{zhsong}[AutoFakeBold = 3,Path=fonts/]{simsun.ttc}%
+  \setCJKfamilyfont{zhhei}[AutoFakeBold = 3,Path=fonts/]{simhei.ttf}%
+  \setCJKfamilyfont{zhkai}[AutoFakeBold = 3,Path=fonts/]{simkai.ttf}%
+  \setCJKfamilyfont{zhfs}[AutoFakeBold = 3,Path=fonts/]{simfang.ttf}%
 }
 %%% TODO 以上被更改，做了本地化的设置
 \@namedef{thu@set@cjk@font@windows-local}{%
@@ -4402,7 +4403,7 @@
       }%
     \fi
     \hypersetup{
-      pdfcreator={\sudathesis-v\version}}%%% TODO此处被更改
+      pdfcreator={\sudathesiscross-v\version}}%%% TODO此处被更改
   }%
 }
 \AtEndOfPackageFile*{mathtools}{

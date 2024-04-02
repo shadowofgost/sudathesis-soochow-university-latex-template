@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/setup.tex
-%% @LastTime         : 2023-12-25 21:40:45
+%% @LastTime         : 2024-04-02 14:44:23
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -169,6 +169,9 @@
 % 量和单位
 \usepackage{siunitx}
 
+% 序列编号的方式
+\usepackage{enumitem}
+
 % 参考文献使用 BibTeX + natbib 宏包
 % 顺序编码制
 \usepackage[sort]{natbib}
@@ -178,6 +181,10 @@
 % \usepackage{natbib}
 % \bibliographystyle{./bibstyle/thuthesis-author-year}
 
+% 生命科学学院要求使用 Cell 参考文献格式（2023 年以前使用 author-date 格式）
+% \usepackage{natbib}
+% \bibliographystyle{cell}
+
 % 本科生参考文献的著录格式
 % \usepackage[sort]{natbib}
 % \bibliographystyle{./bibstyle/thuthesis-bachelor}
@@ -185,6 +192,7 @@
 % 参考文献使用 BibLaTeX 宏包
 % \usepackage[style=./bibstyle/thuthesis-numeric]{biblatex}
 % \usepackage[style=./bibstyle/thuthesis-author-year]{biblatex}
+% \usepackage[style=gb7714-2015]{biblatex}
 % \usepackage[style=apa]{biblatex}
 % \usepackage[style=mla-new]{biblatex}
 % 声明 BibLaTeX 的数据库
