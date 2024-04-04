@@ -69,8 +69,7 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 * `standards`：存放论文格式标准的文件夹
 * `main.tex`：编译的主体文件
 * `setup.tex`：配置文件，在编译前请设置查看注释设置一下
-* `sudathesis.cls`：模板文件,根据使用的平台不同使用所在平台的字体
-* `sudathesiscross.cls`：跨平台模板模板文件，使用的是fonts中的字体，保证各个平台编译结果一致
+* `sudathesis.cls`：模板文件,根据使用的平台不同使用所在平台的字体，默认使用fonts内的windows字体保证跨平台编译一致性。 
 * `main.pdf`：编译生成的pdf文件也是论文
 * `help.pdf`：帮助文档，里面有详细的关于模板的使用说明，可以参考相关的tex文件比对查看
 
