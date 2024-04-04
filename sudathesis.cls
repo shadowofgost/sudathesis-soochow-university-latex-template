@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-04-02 17:49:55
+%% @LastTime         : 2024-04-04 13:35:52
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -1008,16 +1008,30 @@
 \newfontfamily\zititime{Times New Roman}%TODO: 主要是标记此处更改，添加Times New Roman的宏语言
 %%%% TODO：以下被更改
 \newcommand\thu@set@cjk@font@windows{%
-  \setCJKmainfont{SimSun}[
-    AutoFakeBold = 3,
-    ItalicFont   = KaiTi,
-  ]%
-  \setCJKsansfont{SimHei}[AutoFakeBold = 3]%
-  \setCJKmonofont{FangSong}%
-  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold = 3]%
-  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold = 3]%
-  \setCJKfamilyfont{zhkai}{KaiTi}%
-  \setCJKfamilyfont{zhfs}{FangSong}%
+  \IfFileExists{./fonts/simsun.ttc}{
+    \setCJKmainfont[
+      AutoFakeBold = 3,
+      ItalicFont   = simkai.ttf,
+      Path=fonts/
+    ]{simsun.ttc}%
+    \setCJKsansfont[AutoFakeBold = 3,Path=fonts/]{simhei.ttf}%
+    \setCJKmonofont[AutoFakeBold = 3,Path=fonts/]{simfang.ttf}%
+    \setCJKfamilyfont{zhsong}[AutoFakeBold = 3,Path=fonts/]{simsun.ttc}%
+    \setCJKfamilyfont{zhhei}[AutoFakeBold = 3,Path=fonts/]{simhei.ttf}%
+    \setCJKfamilyfont{zhkai}[AutoFakeBold = 3,Path=fonts/]{simkai.ttf}%
+    \setCJKfamilyfont{zhfs}[AutoFakeBold = 3,Path=fonts/]{simfang.ttf}%
+  }{
+    \setCJKmainfont{SimSun}[
+      AutoFakeBold = 3,
+      ItalicFont   = KaiTi,
+    ]%
+    \setCJKsansfont{SimHei}[AutoFakeBold = 3]%
+    \setCJKmonofont{FangSong}%
+    \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold = 3]%
+    \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold = 3]%
+    \setCJKfamilyfont{zhkai}{KaiTi}%
+    \setCJKfamilyfont{zhfs}{FangSong}%
+  }
 }
 %%% TODO 以上被更改，做了本地化的设置
 \@namedef{thu@set@cjk@font@windows-local}{%
