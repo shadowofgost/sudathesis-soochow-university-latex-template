@@ -1683,7 +1683,13 @@
       \xiaowu
       \rmfamily
       \ifthu@main@language@chinese
-        \thu@title
+        \ifthenelse{\equal{\leftmark}{Abstract}}{
+          % 如果章节名称是 Abstract，则设英文
+          \thu@title@en
+        }{
+          % 否则设置中文
+          \thu@title
+        }
       \else
         \MakeUppercase{\thu@title@en}%
       \fi

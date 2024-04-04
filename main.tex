@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/main.tex
-%% @LastTime         : 2024-04-04 14:46:45
+%% @LastTime         : 2024-04-04 10:00:45
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -13,7 +13,7 @@
 % !TeX program = xelatex
 % !TeX spellcheck = en_US
 
-\documentclass[degree=bachelor,print-style=oneside]{sudathesis}
+\documentclass[degree=master,print-style=twoside,sequence-style=liberal]{sudathesiscross}
   % 学位 degree:
   %   doctor | master | bachelor | postdoc
   % 学位类型 degree-type:
@@ -43,9 +43,9 @@
 % 插入封面，针对苏大本科生毕业论文
 %\includepdf[pages={1}]{./figures/cover.pdf}
 % 生成封面，针对苏大研究生毕业论文中文版
-\titlech
+%\titlech
 % 生成封面，针对苏大研究生毕业论文英文版
-\titleeng
+%\titleeng
 % 学位论文指导小组、公开评阅人和答辩委员会名单
 % 本科生不需要
 %\input{data/committee}
@@ -56,17 +56,18 @@
 % \copyrightpage[file=scan-copyright.pdf]
 
 % 插入独创性声明和使用授权说明（苏大本科生）
-\includepdf[pages={1,2}]{./figures/statement.pdf}
+%\includepdf[pages={1,2}]{./figures/statement.pdf}
 
 \frontmatter
 %\newpage
-\pagestyle{cnfrontmatter}
-\input{contents/abstract_cn}
-\newpage
-\pagestyle{enfrontmatter}
-\input{contents/abstract_en}
-\newpage
-\pagestyle{plain}
+%\pagestyle{cnfrontmatter}
+%\input{contents/abstract_cn}
+%\newpage
+%\pagestyle{enfrontmatter}
+%\input{contents/abstract_en}
+%\newpage
+%\pagestyle{plain}
+\input{contents/abstract.tex}
 % 目录
 \tableofcontents
 

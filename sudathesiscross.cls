@@ -3,8 +3,8 @@
 %% @Time             : 2024-04-02 17:41:36
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
-%% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis-cross.cls
-%% @LastTime         : 2024-04-02 18:06:40
+%% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesiscross.cls
+%% @LastTime         : 2024-04-04 11:02:42
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2024 Albert Wang 王子睿, All Rights Reserved.
@@ -1684,7 +1684,13 @@
       \xiaowu
       \rmfamily
       \ifthu@main@language@chinese
-        \thu@title
+        \ifthenelse{\equal{\leftmark}{Abstract}}{
+          % 如果章节名称是 Abstract，则设英文
+          \thu@title@en
+        }{
+          % 否则设置中文
+          \thu@title
+        }
       \else
         \MakeUppercase{\thu@title@en}%
       \fi
@@ -3312,7 +3318,9 @@
       },
       }%
     \thu@chapter*{\thu@yingyan@name}%
-}{}
+}{
+  \thu@reset@main@language
+}
 %%% TODO以上被额外添加进系统
 \newenvironment{abstract}{%
   \ifthu@degree@bachelor
