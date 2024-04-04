@@ -4,7 +4,7 @@
  #  @Description      :
  #  @Email            : shadowofgost@outlook.com
  #  @FilePath         : /sudathesis-soochow-university-latex-template/README.md
- #  @LastTime         : 2023-11-23 20:18:24
+ #  @LastTime         : 2024-04-02 19:27:49
  #  @LastAuthor       : Albert Wang
  #  @Software         : Vscode
  #  @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -33,6 +33,7 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
   <!--:
   * [Overleaf](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)：Overleaf 的模板。
   : -->
+  * [TexPager](https://www.texpage.com/template/c05aaf0d-7a14-4a1c-96b5-938556f726b1)
 * 开发版：[GitHub](https://github.com/tuna/thuthesis)
 
 ## 特点
@@ -61,13 +62,14 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 * `.vscode`：存放着vscode的插件`LaTeX Workshop`的配置文件
 * `bibstyle`：参考文献的样式设置
 * `contents`：摘要、论文主题的源码
+* `fonts`：存放字体的文件夹
 * `figures`：存放图片的文件夹和插入的pdf文件夹
 * `reference`：存放引用文献的文件夹
 * `help`：存放帮助文件的帮助文档
 * `standards`：存放论文格式标准的文件夹
 * `main.tex`：编译的主体文件
 * `setup.tex`：配置文件，在编译前请设置查看注释设置一下
-* `sudathesis.cls`：模板文件
+* `sudathesis.cls`：模板文件,根据使用的平台不同使用所在平台的字体，默认使用fonts内的windows字体保证跨平台编译一致性。 
 * `main.pdf`：编译生成的pdf文件也是论文
 * `help.pdf`：帮助文档，里面有详细的关于模板的使用说明，可以参考相关的tex文件比对查看
 
@@ -115,4 +117,3 @@ sudathesis-soochow-university-latex-template 遵循 [Contributor Covenant](http:
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=shadowofgost/sudathesis-soochow-university-latex-template&type=Date)](https://star-history.com/#shadowofgost/sudathesis-soochow-university-latex-template&Date)
-
