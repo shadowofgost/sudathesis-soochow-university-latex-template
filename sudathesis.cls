@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-04-04 13:35:52
+%% @LastTime         : 2024-04-05 10:13:32
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -3348,6 +3348,14 @@
       \thu@chapter*{\thu@abstract@name}%
     \endgroup
   \else
+    %%% TODO:以下为额外添加
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\zititime\fontsize{18bp}{24bp}\selectfont,
+        aftername  = \quad,
+      },
+      }%
+    %%% TODO:以上为额外添加
     \thu@chapter*[]{\thu@abstract@name}%
   \fi
 }{%
@@ -3374,6 +3382,14 @@
   \ifthu@degree@graduate
     \thu@chapter*{\thu@abstract@name@en}%
   \else
+    %%% TODO:以下为额外添加
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\zititime\fontsize{18bp}{23.4bp}\selectfont,
+        aftername  = \quad,
+      },
+      }%
+    %%% TODO以上为额外添加
     \thu@chapter*[]{\thu@abstract@name@en}%
   \fi
 }{%
