@@ -40,7 +40,7 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 
 > 现有的关于苏大毕业论文LaTex模板的内容包括[@huhamhire](https://github.com/maxogden) 的项目[sudathesis](https://github.com/huhamhire/sudathesis)、[@hinesboy](https://github.com/hinesboy)的[SUDA-Latex](https://github.com/hinesboy/SUDA-Latex)和[@tianhaoo](https://github.com/tianhaoo)的项目[Soochow-University-Thesis-Overleaf-LaTeX-Template](https://github.com/tianhaoo/Soochow-University-Thesis-Overleaf-LaTeX-Template)。
 
-但是以上项目都是以研究生毕业论文为主，并未有针对本科生、研究生和博士生的论文模板，所以自己在清华latex模板的基础上参照本科生毕业论文2020要求进行了修改，使之同时满足本科生、硕士生和博士生毕业论文的格式要求，并对完全跨平台编译做了适配，使之运行在 [Overleaf 平台](https://www.overleaf.com/)上，也可以在vscode平台上使用，同时也实现了多平台（windows，mac，linux）同样的输出效果，如果你有如下的痛点，则可以考虑使用本项目：
+但是以上项目都是以研究生毕业论文为主，并未有针对本科生、研究生和博士生的论文模板，所以自己在清华latex模板的基础上参照本科生毕业论文2020要求和研究生学位论文基本格式2018版进行了修改，使之同时满足本科生、硕士生和博士生毕业论文的格式要求，并对完全跨平台编译做了适配，使之运行在 [Overleaf 平台](https://www.overleaf.com/)上，也可以在vscode平台上使用，同时也实现了多平台（windows，mac，linux）同样的输出效果，如果你有如下的痛点，则可以考虑使用本项目：
 
 * 厌倦了臃肿的本地latex开发环境和被texlive搞乱的系统环境变量
 
