@@ -1,13 +1,8 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/main/containers/ubuntu
 {
-    "name": "Ubuntu",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "args": {
-            "VARIANT": "jammy"
-        }
-    },
+    "name": "sudathesis",
+    "image":"shadowofgost/texlive-development:latest",
     // Set *default* container specific settings.json values on container create.
     // Add the IDs of extensions you want installed when the container is created.
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
