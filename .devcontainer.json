@@ -1,5 +1,6 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/main/containers/ubuntu
+// https://github.com/shadowofgost/auto-workflow/blob/main/texlive/Dockerfile
 {
     "name": "sudathesis",
     "image":"shadowofgost/texlive-development:latest",
