@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-04-28 15:52:24
+%% @LastTime         : 2024-04-28 15:58:03
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -1680,7 +1680,11 @@
       \if@mainmatter
         -\thepage-
       \else
-        \thepage
+        \ifthu@backmatter
+          -\thepage-
+        \else
+          \thepage
+        \fi
       \fi
     }%
     \let\@mkboth\@gobbletwo

@@ -3447,7 +3447,15 @@
       \else
         \xiaowu
       \fi
-      -\thepage-
+      \if@mainmatter
+        -\thepage-
+      \else
+        \ifthu@backmatter
+          -\thepage-
+        \else
+          \thepage
+        \fi
+      \fi
     }%
     \let\@mkboth\@gobbletwo
     \let\chaptermark\@gobble
@@ -3467,7 +3475,7 @@
       \xiaowu
       \rmfamily
       \ifthu@main@language@chinese
-        \ifthenelse{\equal{\leftmark}{Abstract}}{
+        \ifthenelse{\equal{\leftmark}{\thu@abstract@name@en}}{
           % 如果章节名称是 Abstract，则设英文
           \thu@title@en
         }{
