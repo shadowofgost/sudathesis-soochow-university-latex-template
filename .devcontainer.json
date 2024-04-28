@@ -4,6 +4,297 @@
 {
     "name": "sudathesis",
     "image":"shadowofgost/texlive-development:latest",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "James-Yu.latex-workshop"
+            ],
+            "settings": {
+                "editor.accessibilitySupport": "on",
+                "files.autoSave": "afterDelay",
+                "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+                "editor.wordWrap": "bounded",
+                "files.exclude": {
+                    "**/.classpath": true,
+                    "**/.idea": true,
+                    "**/.project": true,
+                    "**/.settings": true
+                },
+                "editor.codeActionsOnSave": {
+                    "source.fixAll.markdownlint": "explicit"
+                },
+                "editor.experimental.asyncTokenization": true,
+                "editor.guides.bracketPairs": true,
+                "editor.inlayHints.fontFamily": "JetBrainsMono Nerd Font Mono",
+                "editor.inlayHints.fontSize": 14,
+                "editor.linkedEditing": true,
+                "editor.mouseWheelZoom": true,
+                "editor.tabCompletion": "on",
+                "editor.stickyTabStops": true,
+                "editor.cursorSmoothCaretAnimation": "on",
+                "editor.formatOnPaste": true,
+                "editor.formatOnSave": true,
+                "editor.formatOnType": true,
+                "diffEditor.codeLens": true,
+                "diffEditor.ignoreTrimWhitespace": false,
+                "editor.suggest.preview": true,
+                "editor.suggest.shareSuggestSelections": true,
+                "files.insertFinalNewline": true,
+                "files.saveConflictResolution": "overwriteFileOnDisk",
+                "files.trimFinalNewlines": true,
+                "files.trimTrailingWhitespace": true,
+                "files.watcherExclude": {
+                    "**/.git/**": true,
+                    "**/.history/*/**": true,
+                    "**/Backup/**": true,
+                    "**/env/**": true
+                },
+                "workbench.list.horizontalScrolling": true,
+                "workbench.preferredHighContrastColorTheme": "Red",
+                "workbench.editor.limit.enabled": true,
+                "explorer.copyRelativePathSeparator": "/",
+                "search.collapseResults": "auto",
+                "search.exclude": {
+                    "**/.**": true,
+                    "**/.env": true,
+                    "**/.hsitory": true,
+                    "**/Backup": true,
+                    "**/env": true
+                },
+                "search.experimental.notebookSearch": true,
+                "search.smartCase": true,
+                "search.seedWithNearestWord": true,
+                "search.useGlobalIgnoreFiles": true,
+                "debug.allowBreakpointsEverywhere": true,
+                "debug.console.closeOnEnd": true,
+                "debug.showBreakpointsInOverviewRuler": true,
+                "debug.terminal.clearBeforeReusing": true,
+                "testing.automaticallyOpenPeekViewDuringAutoRun": true,
+                "scm.alwaysShowActions": true,
+                "scm.alwaysShowRepositories": true,
+                "scm.inputFontSize": 14,
+                "scm.inputFontFamily": "JetBrainsMono Nerd Font Mono",
+                "extensions.closeExtensionDetailsOnViewChange": true,
+                "terminal.integrated.copyOnSelection": true,
+                "terminal.integrated.cursorBlinking": true,
+                "terminal.integrated.cursorStyle": "line",
+                "terminal.integrated.cursorWidth": 3,
+                "terminal.integrated.defaultProfile.windows": "PowerShell",
+                "terminal.integrated.gpuAcceleration": "on",
+                "terminal.integrated.sendKeybindingsToShell": true,
+                "terminal.integrated.scrollback": 100000,
+                "problems.showCurrentInStatus": true,
+                "timeline.pageOnScroll": true,
+                "notebook.cellToolbarLocation": {
+                    "jupyter-notebook": "left"
+                },
+                "notebook.formatOnSave.enabled": true,
+                "notebook.outline.showCodeCells": true,
+                "merge-conflict.autoNavigateNextConflict.enabled": true,
+                "git.alwaysShowStagedChangesResourceGroup": true,
+                "git.autofetch": true,
+                "git.autoStash": true,
+                "git.enableSmartCommit": true,
+                "git.fetchOnPull": true,
+                "git.ignoredRepositories": [
+                    "*.log",
+                    "**/env/**",
+                    "**/alembic/**",
+                    "**/.mypy_cache/**",
+                    "**/.history/**",
+                    "**/__pycache__/**",
+                    "*.pyc",
+                    "**/Backup/**"
+                ],
+                "git.repositoryScanIgnoredFolders": [
+                    "node_modules",
+                    "env",
+                    "alembic",
+                    "Backup",
+                    ".history",
+                    ".VSCodeCounter"
+                ],
+                "html.format.indentHandlebars": true,
+                "html.format.indentInnerHtml": true,
+                "workbench.colorTheme": "GitHub Dark Dimmed",
+                "tabnine.experimentalAutoImports": true,
+                "editor.inlineSuggest.enabled": true,
+                "fileheader.configObj": {
+                    "CheckFileChange": false,
+                    "afterAnnotation": {
+                        "文件后缀": "该文件后缀的头部注释之后添加某些内容"
+                    },
+                    //"annotationStr": {
+                    //    "end": " */",
+                    //    "head": "/*",
+                    //    "middle": "#@",
+                    //    "use": true
+                    //},
+                    "atSymbol": [
+                        "@",
+                        "@"
+                    ],
+                    "atSymbolObj": {
+                        "文件后缀": [
+                            "头部注释@符号",
+                            "函数注释@符号"
+                        ]
+                    },
+                    "autoAdd": true,
+                    "autoAddLine": 10000,
+                    "autoAlready": true,
+                    "beforeAnnotation": {
+                        "c": "// -*- coding: utf-8 -*-",
+                        "cpp": "// -*- coding: utf-8 -*-",
+                        "java": "// -*- coding: utf-8 -*-",
+                        "js": "// -*- coding: utf-8 -*-",
+                        "kotlin": "// -*- coding: utf-8 -*-",
+                        "py": "# cython: language_level=3\n#!./env python\n# -*- coding: utf-8 -*-",
+                        "pyd": "# cython: language_level=3\n#!./env python\n# -*- coding: utf-8 -*-",
+                        "pyx": "# cython: language_level=3\n#!./env python\n# -*- coding: utf-8 -*-",
+                        "sh": "#!/usr/bin/env bash\n# -*- coding: utf-8 -*-",
+                        "vue": "// -*- coding: utf-8 -*-"
+                    },
+                    "colon": [
+                        ": ",
+                        ": "
+                    ],
+                    "colonObj": {
+                        "文件后缀": [
+                            "头部注释冒号",
+                            "函数注释冒号"
+                        ]
+                    },
+                    "createHeader": true,
+                    "createFileTime": true, // 设为false更改为当前生成注释的时间
+                    "cursorModeInternalAll": {},
+                    "customHasHeadEnd": {},
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "designAddHead": true,
+                    "filePathColon": "/",
+                    "folderBlacklist": [
+                        "node_modules",
+                        "env",
+                        ".vscode",
+                        ".history",
+                        ".VsCodeCounter",
+                        "文件夹禁止自动添加头部注释"
+                    ],
+                    "functionBlankSpaceAll": {},
+                    "functionParamsShape": [
+                        "{",
+                        "}"
+                    ],
+                    "functionTypeSymbol": "*",
+                    "functionWideNum": 0,
+                    "headDesign": false,
+                    "headDesignName": "random",
+                    "headInsertLine": {
+                        "php": 2,
+                        "sh": 2
+                    },
+                    "language": {
+                        "blade.php": {
+                            "end": "-->",
+                            "head": "<!--",
+                            "middle": " *  @"
+                        },
+                        "h/hpp/cpp/c/js/java/kotlin/cs/scala": {
+                            "end": " */",
+                            "functionSymbol": {
+                                "end": " */",
+                                "head": "/* ",
+                                "middle": " *  @"
+                            },
+                            "head": "/**",
+                            "middle": "  * @"
+                        },
+                        "html": {
+                            "end": "-->",
+                            "head": "<!--",
+                            "middle": "  * @"
+                        },
+                        "languagetest": {
+                            "end": " $/",
+                            "head": "/$$",
+                            "middle": " $ @"
+                        },
+                        "md": {
+                            "end": " # : -->",
+                            "head": "<!--:",
+                            "middle": " #  @"
+                        },
+                        "tex/cls": {
+                            "end": "%%",
+                            "head": "%%",
+                            "middle": "%% @"
+                        },
+                        "py/pyd/pyx": {
+                            "end": "\"\"\"",
+                            "head": "\"\"\"",
+                            "middle": "# @"
+                        },
+                        "vue": {
+                            "end": "-->",
+                            "head": "<!--",
+                            "middle": "//  @"
+                        }
+                    },
+                    "moveCursor": true,
+                    "openFunctionParamsCheck": true,
+                    "prohibitAutoAdd": [
+                        "json"
+                    ],
+                    "prohibitItemAutoAdd": [
+                        "项目的全称, 整个项目禁止自动添加头部注释, 可以使用快捷键添加"
+                    ],
+                    "showErrorMessage": false,
+                    "specialOptions": {
+                        "Date": "Time",
+                        "LastEditTime": "LastTime",
+                        "LastEditors": "LastAuthor"
+                    },
+                    "supportAutoLanguage": [],
+                    "switch": {
+                        "newlineAddAnnotation": true
+                    },
+                    "throttleTime": 60000,
+                    "typeParamOrder": "type param",
+                    "useWorker": false,
+                    "wideNum": 17,
+                    "wideSame": true,
+                    "writeLog": false
+                },
+                "fileheader.customMade": {
+                    "Author": "Albert Wang",
+                    "Date": " Do not edit",
+                    "Description": " ",
+                    "Email": "shadowofgost@outlook.com",
+                    "FilePath": " Do not edit",
+                    "LastEditTime": " Do not edit",
+                    "LastEditors": "Albert Wang",
+                    "Software": "Vscode",
+                    "custom_string_obkoro1_copyright": " Copyright Notice : Copyright (c) ${now_year} Albert Wang 王子睿, All Rights Reserved."
+                },
+                "fileheader.cursorMode": {
+                    "description": "", // 函数注释生成之后，光标移动到这里
+                    "param": "", // param 开启函数参数自动提取 需要将光标放在函数行或者函数上方的空白行
+                    "return": "",
+                },
+                "[latex]": {
+                    "editor.defaultFormatter": "mathematic.vscode-latex"
+                },
+                "workbench.iconTheme": "vscode-icons",
+                "workbench.editorAssociations": {
+                    "*.pdf": "pdf.preview"
+                },
+                "yaml.schemas": {
+                    "file:///c%3A/Users/shadowofgost/.vscode/extensions/docsmsft.docs-yaml-1.0.1/dist/toc.schema.json": "/toc\\.yml/i"
+                },
+                "latex-workshop.latex.autoBuild.run": "never"
+            }
+        }
+    }
     // Set *default* container specific settings.json values on container create.
     // Add the IDs of extensions you want installed when the container is created.
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -11,5 +302,6 @@
     // Use 'postCreateCommand' to run commands after the container is created.
     // "postCreateCommand": "uname -a",
     // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-    "remoteUser": "vscode"
+
+    //"remoteUser": "vscode"
 }
