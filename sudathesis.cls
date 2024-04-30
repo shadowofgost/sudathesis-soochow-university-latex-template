@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-04-28 15:58:03
+%% @LastTime         : 2024-04-30 18:15:07
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -1601,64 +1601,6 @@
 }
 \pagestyle{fancy}
 %%% TODO：以下被更改
-\fancypagestyle{cnfrontmatter}{
-  \fancyhf{}
-  \renewcommand\headrulewidth{0.75bp}%
-  \renewcommand\footrulewidth{0pt}%
-  \ifthu@degree@bachelor
-    \fancyhead[C]{%
-      \ifthu@main@language@chinese
-        \xiaowu 苏州大学本科生毕业设计（论文）
-      \else
-        \xiaowu
-      \fi
-      }%
-    \fancyfoot[C]{
-      \ifthu@main@language@chinese
-        \xiaowu
-      \else
-        \xiaowu
-      \fi
-      -\thepage-
-    }%
-  \else
-    \fancyhead[RO,LE]{\xiaowu\rmfamily{摘要}\vspace{0mm}}
-    \fancyhead[LO,RE]{\xiaowu\rmfamily\thu@title\vspace{0mm}}
-    \fancyfoot[C]{\xiaowu\thepage}
-  \fi
-  \let\@mkboth\markboth
-  \let\sectionmark\@gobble
-}
-\fancypagestyle{enfrontmatter}{
-  \fancyhf{}
-  \renewcommand\headrulewidth{0.75bp}%
-  \renewcommand\footrulewidth{0pt}%
-  \ifthu@degree@bachelor
-    \fancyhead[C]{%
-      \ifthu@main@language@chinese
-        \xiaowu 苏州大学本科生毕业设计（论文）
-      \else
-        \xiaowu
-      \fi
-    }%
-    \fancyfoot[C]{
-      \ifthu@main@language@chinese
-        \xiaowu
-      \else
-        \xiaowu
-      \fi
-      -\thepage-
-    }%
-  \else
-    \fancyhead[RO,LE]{\xiaowu\rmfamily{Abstract}\vspace{0mm}}
-    \fancyhead[LO,RE]{\xiaowu\rmfamily\thu@title@en\vspace{0mm}}
-    \fancyfoot[C]{\xiaowu\thepage}
-  \fi
-  \let\@mkboth\markboth
-  \let\sectionmark\@gobble
-}
-%%%TODO： 以上被额外添加进系统
-%%% TODO：以下被更改
 \fancypagestyle{plain}{%
   \fancyhf{}%
   \renewcommand\footrulewidth{0pt}%
@@ -2826,14 +2768,14 @@
       \renewcommand\CJKglue{\hspace{1bp}}%
     \fi
     \ifthu@thesis@type@thesis
-      (申请清华大学\thu@degree@category
+      (申请苏州大学\thu@degree@category%%% TODO 此处被更改
       \ifthu@degree@type@professional
         专业%
       \fi
       学位论文)%
     \else
       \ifthu@thesis@type@proposal
-        (清华大学%
+        (苏州大学%%%% TODO 此处被更改
         \ifthu@degree@doctor
           博士%
         \else
@@ -3106,7 +3048,7 @@
     }%
     \vskip 3.15cm%
     {\sffamily\bfseries\xiaoer[2.6]%
-      {\ziju{1.5}清华大学\par}%
+      {\ziju{1.5}苏州大学\par}% %%% TODO 此处被更改
       {\ziju{0.5}博士后研究工作报告\par}%
     }%
     \vskip 0.2cm%
@@ -3130,7 +3072,7 @@
       \thu@uline[5.9cm]{\thu@format@date{\thu@date@zh@digit@short}{\thu@date}}\par
     }%
     \vskip 0.45cm%
-    {\xiaosi[2]{\ziju{1}清华大学}\quad （北京）\par}%
+    {\xiaosi[2]{\ziju{1}苏州大学}\quad （苏州）\par}%%%% TODO 此处被更改
     \vskip 0.25cm%
     {\xiaosi[2]\thu@format@date{\thu@date@zh@digit@short}{\thu@date}\par}%
   \end{center}%
@@ -3162,7 +3104,7 @@
       研究工作期满时间\quad\thu@format@date{\thu@date@zh@digit}{\thu@end@date}\par
     }%
     \vskip 2.1cm%
-    {\xiaosi[2.6]清华大学人事处（北京）\par}%
+    {\xiaosi[2.6]苏州大学人事处（苏州）\par}% %%% TODO 此处被更改
     \vskip 0.6cm%
     {\wuhao\thu@format@date{\thu@date@zh@digit@short}{\thu@date}\par}%
   \end{center}%
@@ -3254,8 +3196,8 @@
   \vskip 13bp%
   \begingroup
     \fontsize{14bp}{26bp}\selectfont
-    本人完全了解清华大学有关保留、使用学位论文的规定，即：\par
-    清华大学拥有在著作权法规定范围内学位论文的使用权，其中包括：%
+    本人完全了解苏州大学有关保留、使用学位论文的规定，即：\par %%% TODO 此处被更改
+    苏州大学拥有在著作权法规定范围内学位论文的使用权，其中包括：% %%% TODO 此处被更改
     （1）\nobreak 已获学位的研究生必须按学校规定提交学位论文，%
     学校可以采用影印、缩印或其他复制手段保存研究生上交的学位论文；\allowbreak
     （2）\nobreak 为教学和科研目的，学校可以将公开的学位论文作为资料在图书馆、资料室等场所供校内师生阅读，%
@@ -3293,7 +3235,7 @@
     \thispagestyle{empty}%
   \endgroup
   \vskip 4bp%
-  本人完全了解清华大学有关保留、使用学位论文的规定，即：%
+  本人完全了解苏州大学有关保留、使用学位论文的规定，即：% %%% TODO 此处被更改
   学校有权保留学位论文的复印件，允许该论文被查阅和借阅；%
   学校可以公布该论文的全部或部分内容，可以采用影印、缩印或其他复制手段保存该论文。\par
   \textbf{(涉密的学位论文在解密后应遵守此规定)}\par

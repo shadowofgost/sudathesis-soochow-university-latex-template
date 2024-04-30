@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/main.tex
-%% @LastTime         : 2024-04-04 13:43:29
+%% @LastTime         : 2024-04-30 18:16:36
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -18,6 +18,8 @@
   %   doctor | master | bachelor | postdoc
   % 学位类型 degree-type:
   %   academic（默认）| professional
+  % 文章类型 thesis-type:
+  %   thesis（默认）| proposal(开题报告)
   % 语言 language
   %   chinese（默认）| english
   % 字体库 fontset
@@ -59,16 +61,6 @@
 %\includepdf[pages={1,2}]{./figures/statement.pdf}
 
 \frontmatter
-%%% 以下是生成摘要的另一种方式
-%\newpage
-%\pagestyle{cnfrontmatter}
-%\input{contents/abstract_cn}
-%\newpage
-%\pagestyle{enfrontmatter}
-%\input{contents/abstract_en}
-%\newpage
-%\pagestyle{plain}
-%%% 以下上是生成摘要的另一种方式
 \input{contents/abstract.tex}
 % 目录
 \tableofcontents
