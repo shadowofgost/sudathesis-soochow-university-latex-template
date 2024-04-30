@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-04-30 18:15:07
+%% @LastTime         : 2024-04-30 14:01:10
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -327,6 +327,14 @@
       liberal,
     },
     default = science,
+  },
+  cover-type = {
+    name=cover@type,
+    choices = {
+      sudacover,
+      thucover,
+    },
+    default = sudacover,
   },
   %%% TODO：以上被更改
 }
@@ -2527,7 +2535,7 @@
 \newcommand\dlmu[2][4cm]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 %
 \newcommand{\titlech}{
-  %\thispagestyle{empty}%
+  \thispagestyle{empty}
   \begin{titlepage}
   \begin{center}
     \hfill %居右
@@ -2576,8 +2584,9 @@
             论文提交日期&\ulinecvcbc{\thu@format@date{\thu@date@zh@digit@short}{\thu@date}}\\[.4ex]
         \end{tabular}
       }
-    \end{center}
+  \end{center}
   \end{titlepage}
+  %\clearpage
 }
 
 % 英文首页
@@ -2623,8 +2632,12 @@
   \fi
   \ifthu@degree@graduate
     \ifthu@thesis@type@thesis
-      \cleardoublepage
-      \thu@titlepage@en
+      %%% TODO:下面被更改
+      \ifthu@cover@type@thucover
+        \cleardoublepage
+        \thu@titlepage@en
+      \if
+      %%% TODO:上面被更改
     \fi
   \fi
   \clearpage
@@ -2635,7 +2648,13 @@
     % 研究生
     \ifthu@thesis@type@thesis
       % 学位论文
-      \thu@titlepage@thesis
+      %%% TODO:以下内容被更改
+      %\ifthu@cover@type@sudacover
+      %  \titlech
+      %\else
+        \thu@titlepage@thesis
+      %\if
+      %%% TODO:以上内容被更改
     \else
       \ifthu@thesis@type@proposal
         % 选题报告
