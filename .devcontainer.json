@@ -3,19 +3,7 @@
 // https://github.com/shadowofgost/auto-workflow/blob/main/texlive/Dockerfile
 {
     "name": "sudathesis",
-    "image": "mcr.microsoft.com/devcontainers/base:debian",
-    "features": {
-        "ghcr.io/prulloac/devcontainer-features/latex:1": {
-            "scheme": "full"
-        }
-    },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "James-Yu.latex-workshop"
-            ]
-        }
-    }
+    "image": "shadowofgost/texlive-development:latest"
     // Set *default* container specific settings.json values on container create.
     // Add the IDs of extensions you want installed when the container is created.
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
