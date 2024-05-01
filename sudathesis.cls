@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-05-01 09:39:53
+%% @LastTime         : 2024-05-01 16:41:49
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -2624,9 +2624,22 @@
 
 %%% 本科生封面，只有中文
 \newcommand{\thu@bachelor@suda}{
+  \geometry{
+  top        = 2.9cm,
+  bottom     = 2.3cm,
+  left       = 3cm,
+  right      = 3cm,
+  paper          = a4paper,  % 210 * 297mm
+  marginparwidth = 0cm,
+  marginparsep   = 0cm,
+}%
   \thispagestyle{empty}
   \begin{titlepage}
   \begin{center}
+  \vskip 0.36cm
+  \includegraphics[width=8.2cm,height=3.52cm]{suda.png}
+  \vskip 41pt %%% 1.438716cm
+  \centerline{\fontsize{41.8pt}{41.8pt}\selectfont\rmfamily{本~科~毕~业~设~计（论~文）}}
   \end{center}
   \end{titlepage}
 }
