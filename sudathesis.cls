@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-04-30 14:01:10
+%% @LastTime         : 2024-05-01 09:39:53
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -2621,6 +2621,15 @@
     Soochow University, Soochow, China}
   \end{center}
 }
+
+%%% 本科生封面，只有中文
+\newcommand{\thu@bachelor@suda}{
+  \thispagestyle{empty}
+  \begin{titlepage}
+  \begin{center}
+  \end{center}
+  \end{titlepage}
+}
 %TODO!! 以上是生成苏大论文封面，但是有错误不启用
 \renewcommand\maketitle{%
   \cleardoublepage
@@ -2649,11 +2658,11 @@
     \ifthu@thesis@type@thesis
       % 学位论文
       %%% TODO:以下内容被更改
-      %\ifthu@cover@type@sudacover
-      %  \titlech
-      %\else
+      \ifthu@cover@type@sudacover
+        \titlech
+      \else
         \thu@titlepage@thesis
-      %\if
+      \if
       %%% TODO:以上内容被更改
     \else
       \ifthu@thesis@type@proposal

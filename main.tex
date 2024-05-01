@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/main.tex
-%% @LastTime         : 2024-04-30 13:55:55
+%% @LastTime         : 2024-05-01 09:37:00
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -14,28 +14,26 @@
 % !TeX spellcheck = en_US
 
 \documentclass[degree=master,print-style=twoside,sequence-style=liberal]{sudathesis}
-  % 学位 degree:
-  %   doctor | master | bachelor | postdoc
-  % 学位类型 degree-type:
-  %   academic（默认）| professional
-  % 文章类型 thesis-type:
-  %   thesis（默认）| proposal(开题报告)
-  % 语言 language
-  %   chinese（默认）| english
-  % 字体库 fontset
-  %   windows | mac | fandol | ubuntu
-  % 建议终版使用 Windows 平台的字体编译
-  % 打印设置 print-style
-  %    oneside | twoside
-  % 章节编码设置 sequence-style
-  %   science（默认）| liberal
-  % 封面设置 cover-type
-  %   sudacover（默认） | thucover
-  % 默认使用双面打印，根据自己需要设定双面还是单面打印，如果是提交电子版论文建议使用单面打印消除空白页
-
+% 学位 degree:
+%   doctor | master | bachelor | postdoc
+% 学位类型 degree-type:
+%   academic（默认）| professional
+% 文章类型 thesis-type:
+%   thesis（默认）| proposal(开题报告)
+% 语言 language
+%   chinese（默认）| english
+% 字体库 fontset
+%   windows | mac | fandol | ubuntu
+% 建议终版使用 Windows 平台的字体编译
+% 打印设置 print-style
+%    oneside | twoside
+% 章节编码设置 sequence-style
+%   science（默认）| liberal
+% 封面设置 cover-type
+%   sudacover（默认） | thucover
+% 默认使用双面打印，根据自己需要设定双面还是单面打印，如果是提交电子版论文建议使用单面打印消除空白页
 
 %%% 配置setup.tex 和main。tex后运行，记得自己选择导入生成封面和选择参考文献格式
-
 
 % 论文基本配置，加载宏包等全局配置
 \input{setup}
@@ -46,10 +44,6 @@
 \maketitle
 % 插入封面，针对苏大本科生毕业论文
 %\includepdf[pages={1}]{./figures/cover.pdf}
-% 生成封面，针对苏大研究生毕业论文中文版
-\titlech
-% 生成封面，针对苏大研究生毕业论文英文版
-%\titleeng
 % 学位论文指导小组、公开评阅人和答辩委员会名单
 % 本科生不需要
 %\input{data/committee}
@@ -70,8 +64,8 @@
 % 插图和附表清单
 % 本科生的插图索引和表格索引需要移至正文之后、参考文献前
 % \listoffiguresandtables  % 插图和附表清单（仅限研究生）
-\listoffigures           % 插图清单
-\listoftables            % 附表清单
+\listoffigures		 % 插图清单
+\listoftables		 % 附表清单
 
 % 符号对照表
 \input{contents/denotation}
@@ -95,7 +89,6 @@
 %\end{kai}
 
 %\printbibliography       % 参考文献使用 BibLaTeX 编译
-
 
 %\chapter{附录}
 % 附录
