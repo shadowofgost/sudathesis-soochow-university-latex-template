@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-05-01 16:41:49
+%% @LastTime         : 2024-05-02 16:08:43
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -161,13 +161,18 @@
     },
     default = doctor,
   },
+  %%% TODO:下面部分被改写
   degree-type = {
     choices = {
       academic,
       professional,
+      double,
+      minor,
     },
     name = degree@type,
+    default = academic
   },
+  %%% TODO:上面部分被改写
   main-language = {
     name = main@language,
     choices = {
@@ -2303,6 +2308,28 @@
     default = {SubTitle},
     name    = subtitle@en,
   },
+  class= {
+    default = {班级名称},
+  },
+  class* = {
+    default = {Class Name},
+    name    = class@en,
+  },
+  grade = {
+    default = {年级名称},
+  },
+  grade* = {
+    default = {grades},
+    name = grade@en
+  },
+  supervisor-title= {
+    default = {导师职称},
+    name = supervisor@title,
+  },
+  supervisor-title* = {
+    default = {leve of professor},
+    name = supervisor@title@en,
+  },
   %%% TODO：以上部分被更改
   author = {
     default = {姓名},
@@ -2533,6 +2560,7 @@
 \newcommand{\ulinecvrtc}[1]{\uline{\makebox[24em][c]{#1}}}
 \newcommand{\ulinecvcbc}[1]{\uline{\makebox[14em][c]{#1}}}
 \newcommand\dlmu[2][4cm]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newcommand{\customuline}[2]{\makebox[0pt]{\uline{\phantom{#2}\rule[-0.5ex]{#1}{0.4pt}}}#2}
 %
 \newcommand{\titlech}{
   \thispagestyle{empty}
@@ -2547,43 +2575,43 @@
       \end{tabular}
     }
     \vskip 20bp
-      \includegraphics[width=200bp]{suda.ps}
-      \vskip 20bp
-      \ifthu@degree@master
-        \centerline{\chuhao\rmfamily{硕士学位论文}}
-      \fi
-      \ifthu@degree@doctor
-        \centerline{\chuhao\rmfamily{博士学位论文}}
-      \fi
-      \vskip 10bp
-      \ifthu@degree@type@academic
-        \centerline{\erhao\rmfamily{（学术学位）}}
-      \fi
-      \ifthu@degree@type@professional
-        \centerline{\erhao\rmfamily{（专业学位）}}
-      \fi
-      \includegraphics[width=130pt]{sudamark.jpg}
-      ~~\\
-      \vskip 20bp
-      \begin{tabular}{l}
-        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@title}} \\ %[.4ex]%\hline
-        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@subtitle}} \\
-        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\rmfamily{\thu@title@en}} \\%[.4ex]
-        \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\rmfamily{\thu@subtitle@en}} \\%[.4ex]
-      \end{tabular}
-      \vskip 20bp
-      ~~\\
-      {
-        \fontsize{14bp}{27.3bp}\selectfont\sffamily
-        \begin{tabular}{p{3cm}p{7cm}}
-            研~究~生~姓~名&\ulinecvcbc{\thu@author}\\[.4ex]
-            指导教师姓名&\ulinecvcbc{\thu@supervisor}\\[.4ex]
-            专~~~业~~~名~~称&\ulinecvcbc{\thu@discipline}\\[.4ex]
-            研~~~究~~~方~~向&\ulinecvcbc{\thu@discipline@direct}\\[.4ex]
-            所~~~在~~~院~~部&\ulinecvcbc{\thu@department}\\[.4ex]
-            论文提交日期&\ulinecvcbc{\thu@format@date{\thu@date@zh@digit@short}{\thu@date}}\\[.4ex]
-        \end{tabular}
-      }
+    \includegraphics[width=200bp]{suda.ps}
+    \vskip 20bp
+    \ifthu@degree@master
+      \centerline{\chuhao\rmfamily{硕士学位论文}}
+    \fi
+    \ifthu@degree@doctor
+      \centerline{\chuhao\rmfamily{博士学位论文}}
+    \fi
+    \vskip 10bp
+    \ifthu@degree@type@academic
+      \centerline{\erhao\rmfamily{（学术学位）}}
+    \fi
+    \ifthu@degree@type@professional
+      \centerline{\erhao\rmfamily{（专业学位）}}
+    \fi
+    \includegraphics[width=130pt]{sudamark.jpg}
+    ~~\\
+    \vskip 20bp
+    \begin{tabular}{l}
+      \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@title}} \\ %[.4ex]%\hline
+      \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\sffamily{\thu@subtitle}} \\
+      \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\rmfamily{\thu@title@en}} \\%[.4ex]
+      \ulinecvrtc{\fontsize{14bp}{27.3bp}\selectfont\rmfamily{\thu@subtitle@en}} \\%[.4ex]
+    \end{tabular}
+    \vskip 20bp
+    ~~\\
+    {
+    \fontsize{14bp}{27.3bp}\selectfont\sffamily
+    \begin{tabular}{p{3cm}p{7cm}}
+      研~究~生~姓~名&\ulinecvcbc{\thu@author}\\[.4ex]
+      指导教师姓名&\ulinecvcbc{\thu@supervisor}\\[.4ex]
+      专~~~业~~~名~~称&\ulinecvcbc{\thu@discipline}\\[.4ex]
+      研~~~究~~~方~~向&\ulinecvcbc{\thu@discipline@direct}\\[.4ex]
+      所~~~在~~~院~~部&\ulinecvcbc{\thu@department}\\[.4ex]
+      论文提交日期&\ulinecvcbc{\thu@format@date{\thu@date@zh@digit}{\thu@date}}\\[.4ex]
+    \end{tabular}
+    }
   \end{center}
   \end{titlepage}
   %\clearpage
@@ -2623,24 +2651,48 @@
 }
 
 %%% 本科生封面，只有中文
-\newcommand{\thu@bachelor@suda}{
-  \geometry{
-  top        = 2.9cm,
-  bottom     = 2.3cm,
-  left       = 3cm,
-  right      = 3cm,
-  paper          = a4paper,  % 210 * 297mm
-  marginparwidth = 0cm,
-  marginparsep   = 0cm,
-}%
+\newcommand{\thu@titlepage@bachelor@suda}{
   \thispagestyle{empty}
   \begin{titlepage}
-  \begin{center}
-  \vskip 0.36cm
-  \includegraphics[width=8.2cm,height=3.52cm]{suda.png}
-  \vskip 41pt %%% 1.438716cm
-  \centerline{\fontsize{41.8pt}{41.8pt}\selectfont\rmfamily{本~科~毕~业~设~计（论~文）}}
-  \end{center}
+    \begin{center}
+      \vskip 0.36cm
+      \includegraphics[width=8.2cm,height=3.52cm]{suda.png}
+      \vskip 41pt %%% 1.438716cm
+      \centerline{\fontsize{32bp}{41.6bp}\selectfont\rmfamily{本~~科~~毕~~业~~设~~计（论~~文）}}
+      \vskip 28.6bp
+      \ifthu@degree@type@double
+        \centerline{\fontsize{32bp}{41.6bp}\selectfont\rmfamily{（~~双~~学~~位~~）}}
+      \else
+        \ifthu@degree@type@minor
+          \centerline{\fontsize{32bp}{41.6bp}\selectfont\rmfamily{（~~辅~~~~修~~）}}
+        \else
+          \vskip 41.6bp
+        \fi
+      \fi
+      \vskip 81.9bp
+      {
+      \fontsize{15bp}{15bp}\selectfont\rmfamily
+      \begin{tabular}{p{2.74cm}p{1.06cm}p{2.12cm}p{1.76cm}p{3.48cm}}
+        学院(部)& \multicolumn{4}{c}{\thu@department} \\
+        \cmidrule[0.5bp]{2-5} \\
+        %题~~~目      & \multicolumn{4}{p{8.42cm}}{\multirow{2}{*}{\thu@title}} \\
+        题~~~~~~目& \multicolumn{4}{p{8.42cm}}{\thu@title} \\
+        \cmidrule[0.5bp]{2-5} \\
+                    & \multicolumn{4}{p{8.42cm}}{\thu@subtitle} \\
+        \cmidrule[0.5bp]{2-5} \\
+        年~~~~级& \multicolumn{2}{c}{\thu@grade}  &专业 & \thu@discipline \\
+        \cmidrule[0.5bp]{2-3}\cmidrule[0.5bp]{5-5} \\
+        班~~~~级& \multicolumn{2}{c}{\thu@class} & 学号 & \thu@student@id \\
+        \cmidrule[0.5bp]{2-3}\cmidrule[0.5bp]{5-5} \\
+        姓~~~~名& \multicolumn{4}{c}{\thu@author} \\
+        \cmidrule[0.5bp]{2-5} \\
+        指导老师& \multicolumn{2}{c}{\thu@supervisor} & 职称 & \thu@supervisor@title \\
+        \cmidrule[0.5bp]{2-3}\cmidrule[0.5bp]{5-5} \\
+        \multicolumn{2}{l}{论文提交日期} & \multicolumn{3}{c}{\thu@format@date{\thu@date@zh@digit}{\thu@date}} \\
+        \cmidrule[0.5bp]{3-5}
+      \end{tabular}
+      }
+    \end{center}
   \end{titlepage}
 }
 %TODO!! 以上是生成苏大论文封面，但是有错误不启用
@@ -2658,7 +2710,7 @@
       \ifthu@cover@type@thucover
         \cleardoublepage
         \thu@titlepage@en
-      \if
+      \fi
       %%% TODO:上面被更改
     \fi
   \fi
@@ -2675,7 +2727,7 @@
         \titlech
       \else
         \thu@titlepage@thesis
-      \if
+      \fi
       %%% TODO:以上内容被更改
     \else
       \ifthu@thesis@type@proposal
@@ -2686,7 +2738,13 @@
   \else
     \ifthu@degree@bachelor
       % 本科生
-      \thu@titlepage@bachelor
+      %%% TODO:以下内容被更改
+      \ifthu@cover@type@sudacover
+        \thu@titlepage@bachelor@suda
+      \else
+        \thu@titlepage@bachelor
+      \fi
+      %%% TODO:以上内容被更改
     \else
       \ifthu@degree@postdoc
         % 博后

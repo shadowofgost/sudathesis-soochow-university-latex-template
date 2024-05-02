@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/main.tex
-%% @LastTime         : 2024-05-01 09:37:00
+%% @LastTime         : 2024-05-02 16:26:22
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -17,20 +17,20 @@
 % 学位 degree:
 %   doctor | master | bachelor | postdoc
 % 学位类型 degree-type:
-%   academic（默认）| professional
+%   academic（学术学位）（默认）| professional（专业学位） | double（双学位） | minor（辅修）
 % 文章类型 thesis-type:
 %   thesis（默认）| proposal(开题报告)
 % 语言 language
 %   chinese（默认）| english
 % 字体库 fontset
 %   windows | mac | fandol | ubuntu
-% 建议终版使用 Windows 平台的字体编译
-% 打印设置 print-style
-%    oneside | twoside
+% 建议终版使用 Windows
 % 章节编码设置 sequence-style
 %   science（默认）| liberal
 % 封面设置 cover-type
 %   sudacover（默认） | thucover
+% 打印设置 print-style
+%    oneside | twoside
 % 默认使用双面打印，根据自己需要设定双面还是单面打印，如果是提交电子版论文建议使用单面打印消除空白页
 
 %%% 配置setup.tex 和main。tex后运行，记得自己选择导入生成封面和选择参考文献格式
@@ -51,10 +51,16 @@
 % 使用授权的说明
 %\copyrightpage
 % 将签字扫描后授权文件 scan-copyright.pdf 替换原始页面
-% \copyrightpage[file=scan-copyright.pdf]
-
+%(master-phd-copyright.pdf是指研究生的申明文件，bachelor-copyright.pdf是指本科生的申明文件)
+\copyrightpage[file=statement.pdf]
+% 将签字扫描后的声明文件 scan-statement.pdf 替换原始页面
+%(master-phd-statement.pdf是指研究生的申明文件，bachelor-statement.pdf是指本科生的申明文件)
+\statement[file=statement.pdf]
 % 插入独创性声明和使用授权说明（苏大本科生）
 %\includepdf[pages={1,2}]{./figures/statement.pdf}
+% 插入空白页
+%\includepdf[pages=1]{./figures/empty.pdf}
+
 
 \frontmatter
 \input{contents/abstract.tex}
