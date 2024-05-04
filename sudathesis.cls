@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-05-02 16:08:43
+%% @LastTime         : 2024-05-04 18:53:42
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -2840,9 +2840,9 @@
   \restoregeometry
 }
 \newcommand\thu@set@student@id{%
-  \ifthu@thesis@type@proposal
-    \ifx\thu@student@id\@empty
-      \thusetup{student-id=2000310000}%
+  \ifthu@thesis@type@proposal\else
+    \ifx\thu@student@id\@empty\else
+      \thu@warning{`student-id' in "\protect\thusetup" would be ignored when `thesis-type' is not proposal.}%
     \fi
   \fi
 }
@@ -2899,7 +2899,13 @@
       \thu@info@item{工程领域}{}{\thu@engineering@field}%
       \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
     \fi
-    \thu@info@item{学号}{}{\thu@student@id}%
+    \ifthu@thesis@type@proposal
+      \ifx\thu@student@id\@empty
+        \thu@warning{Missing option `student-id' in "\protect\thusetup", ID will not appear on cover.}
+      \else
+        \thu@info@item{学号}{}{\thu@student@id}%
+      \fi
+    \fi
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
