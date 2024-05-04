@@ -4,7 +4,7 @@
  #  @Description      :
  #  @Email            : shadowofgost@outlook.com
  #  @FilePath         : /sudathesis-soochow-university-latex-template/README.md
- #  @LastTime         : 2024-04-02 19:27:49
+ #  @LastTime         : 2024-05-04 20:05:52
  #  @LastAuthor       : Albert Wang
  #  @Software         : Vscode
  #  @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -34,6 +34,7 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
   * [Overleaf](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)：Overleaf 的模板。
   : -->
   * [TexPager](https://www.texpage.com/template/c05aaf0d-7a14-4a1c-96b5-938556f726b1)
+  * [Overleaf](https://www.overleaf.com/latex/templates/sudathesis-soochow-university-latex-template/qzpqffyybnwm)：Overleaf 的模板。
 * 开发版：[GitHub](https://github.com/tuna/thuthesis)
 
 ## 特点
@@ -69,7 +70,7 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 * `standards`：存放论文格式标准的文件夹
 * `main.tex`：编译的主体文件
 * `setup.tex`：配置文件，在编译前请设置查看注释设置一下
-* `sudathesis.cls`：模板文件,根据使用的平台不同使用所在平台的字体，默认使用fonts内的windows字体保证跨平台编译一致性。 
+* `sudathesis.cls`：模板文件,根据使用的平台不同使用所在平台的字体，默认使用fonts内的windows字体保证跨平台编译一致性。
 * `main.pdf`：编译生成的pdf文件也是论文
 * `help.pdf`：帮助文档，里面有详细的关于模板的使用说明，可以参考相关的tex文件比对查看
 
@@ -78,6 +79,50 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
 1. 下载 最新的release 文件
 2. 在`overleaf.com` 中 `New Project -> Upload Project -> select a .zip file`, 上传刚才下载的zip文件
 3. 在左上角 `Menu -> Compiler` 中选择编译器为XeLaTex， 然后右上角ReCompile
+
+模板有三种使用方式，Overleaf，本地编译，或者 Container 编译：
+
+* Overleaf 是一个线上 LaTeX 编辑器，可以在不安装任何工具的情况下编写 LaTeX 文档，同时也可以和其他人共享文档，共同编辑。
+* 本地编译比 Overleaf 更快，而且本地编译可以使用 Git 来记录版本。推荐有能力的同学设置本地编译环境，并推荐使用 Visual Studio Code 配合 LaTeX workshop 插件 (vscode 使用方式见[FAQ](./docs/FAQ.md))。本地也可以及借助vscode的devcontainer 插件快速地实现本地编译。
+* Container 编译是使用 GitHub 提供的 Codespace 搭配 Container 来编译，这个环境提供了浏览器内的 VS Code 界面以及 TeX Live 的编译环境。这种方式适合熟悉 Container 与 GitHub Codespace 相关用法的同学使用。
+
+### Overleaf
+
+1. 下载最新的release 文件
+2. 在`overleaf.com` 中 `New Project -> Upload Project -> select a .zip file`, 上传刚才下载的zip文件
+3. 在左上角 `Menu -> Compiler` 中选择编译器为XeLaTex， 然后右上角ReCompile
+   * 选择 "Compiler" 为 "XeLaTeX"
+   * 选择 "TeX Live version" 为 "2022" 或者更新的版本
+
+### 本地编译
+
+1. 安装 TeXLive 工具包，编译需要 XeTeX 引擎。
+2. 下载最新的release 文件
+3. 在根目录下运行命令 `latexmk`（或者 `latexmk -xelatex`）即可。**请务必使用此 `latexmk` 命令进行编译（除非你已经了解 LaTeX 的工作机制），否则你可能遇到参考文献无法显示等问题**
+4. 如需使用 LuaTeX 编译，可运行命令 `latexmk -pdflua`
+
+> **注意**
+>
+> * 每年的三月底四月初会有 TeXLive 的版本升级，届时本模板会根据 TeXLive 的更新做出一定的修改，请在提交最终论文前查看并应用本模板的更新。
+> * 如果不想花时间安装texlive工具包，可以使用vscode+devcontainer插件，实现本地的容器化开发，在本地创建开发容器。
+
+### 使用容器编译
+
+本模板提供了一套配置文件，用以支持在容器中安装TeX Live，项目使用的字体，以及VS Code上的[LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)插件，配合GitHub Codespaces可以做到开箱即用。
+
+GitHub Codespace使用方法：
+
+1. 创建个人的项目（直接fork，或自行clone并修改remote）
+2. 在个人的项目主页点击"Code"
+3. 点击"Codespaces"
+4. 点击"New codespace"
+5. 等待容器构建（这一过程约要2分钟）
+6. 构建完成后，可以选择在VS Code（需要[GitHub Codespaces](https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces)插件）中或在浏览器中打开，然后按照在本地的使用方式使用
+
+> **注意**
+>
+> * 这一功能的初衷是为了方便性能较弱的设备（例如低功耗笔记本电脑）也能利用免费的云运算资源较快地完成编译，因此**不建议**在本地性能较强的机器上使用（请改用"本地编译"）。
+
 
 ## 论文格式标准的内容
 
