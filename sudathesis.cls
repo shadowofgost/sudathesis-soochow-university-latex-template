@@ -35,7 +35,7 @@
 %%% TODO 以下被suda替换
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sudathesis}
-[2023/05/17 2.2.0 Soochow University Thesis Template]
+[2024/05/04 2.3.0 Soochow University Thesis Template]
 \newcommand\thu@error[1]{%
   \ClassError{sudathesis}{#1}{}%
 }
@@ -75,7 +75,7 @@
 \hyphenation{Thu-Thesis}
 %%% TODO以下被更改
 \def\sudathesis{ThuThesis}
-\def\version{2.2.0}
+\def\version{2.3.0}
 %%%  TODO：以上被更改
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
