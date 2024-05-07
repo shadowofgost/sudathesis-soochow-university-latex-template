@@ -4,7 +4,7 @@
  #  @Description      :
  #  @Email            : shadowofgost@outlook.com
  #  @FilePath         : /sudathesis-soochow-university-latex-template/README.md
- #  @LastTime         : 2024-05-04 20:05:52
+ #  @LastTime         : 2024-05-07 17:07:24
  #  @LastAuthor       : Albert Wang
  #  @Software         : Vscode
  #  @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -34,7 +34,7 @@ Naive LaTex Template For Soochow University Thesis,Based on ThuThesis 苏州大�
   * [Overleaf](https://www.overleaf.com/latex/templates/thuthesis-tsinghua-university-thesis-latex-template/wddqnwbyhtnk)：Overleaf 的模板。
   : -->
   * [TexPager](https://www.texpage.com/template/c05aaf0d-7a14-4a1c-96b5-938556f726b1)
-  * [Overleaf](https://www.overleaf.com/latex/templates/sudathesis-soochow-university-latex-template/qzpqffyybnwm)：Overleaf 的模板。
+  * [Overleaf](https://www.overleaf.com/latex/templates/sudathesis-soochow-university-latex-template-v2-dot-3-0/tmdsxjgmdfyq)：Overleaf 的模板。
 * 开发版：[GitHub](https://github.com/tuna/thuthesis)
 
 ## 特点
