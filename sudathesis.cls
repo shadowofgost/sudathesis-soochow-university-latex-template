@@ -2575,7 +2575,7 @@
       \end{tabular}
     }
     \vskip 20bp
-    \includegraphics[width=200bp]{suda.ps}
+    \includegraphics[width=200bp]{sudafull.png}
     \vskip 20bp
     \ifthu@degree@master
       \centerline{\chuhao\rmfamily{硕士学位论文}}
@@ -3071,7 +3071,7 @@
   \vfill
   \begingroup
     \centering
-    \includegraphics{suda.ps}%%% TODO此处被更改
+    \includegraphics{sudafull.png}%%% TODO此处被更改
     \vskip 0.94cm%
     \ifthu@thesis@type@proposal
       {\sffamily\bfseries\xiaochu\ziju{0.5}综合论文训练\\开题报告\par}%
