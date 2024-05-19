@@ -35,7 +35,7 @@
 %%% TODO 以下被suda替换
 \NeedsTeXFormat{LaTeX2e}[2017/04/15]
 \ProvidesClass{sudathesis}
-[2024/05/04 2.3.0 Soochow University Thesis Template]
+[2024/05/19 2.3.1 Soochow University Thesis Template]
 \newcommand\thu@error[1]{%
   \ClassError{sudathesis}{#1}{}%
 }
@@ -75,7 +75,7 @@
 \hyphenation{Thu-Thesis}
 %%% TODO以下被更改
 \def\sudathesis{ThuThesis}
-\def\version{2.3.0}
+\def\version{2.3.1}
 %%%  TODO：以上被更改
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
@@ -2088,16 +2088,19 @@
             number = \chinese{chapter},
           },
           section = {
+            format     = \centering\sffamily\zititime\fontsize{14bp}{27.3bp}\selectfont,
             name   = {第,节},
             number = \chinese{section},
           },
           subsection = {
             name   = {,、},
             number = \chinese{subsection},
+            aftername  = {},
           },
           subsubsection = {
             name   = {（,）},
             number = \chinese{subsubsection},
+            aftername  = {},
           },
         }%
       \fi
