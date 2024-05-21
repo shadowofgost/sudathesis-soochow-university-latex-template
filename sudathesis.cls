@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-05-04 18:53:42
+%% @LastTime         : 2024-05-21 23:40:26
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -2031,10 +2031,12 @@
           subsection = {
             name   = {,、},
             number = \chinese{subsection},
+            aftername  = {},
           },
           subsubsection = {
             name   = {（,）},
             number = \chinese{subsubsection},
+            aftername  = {},
           },
         }%
       \fi
@@ -2851,6 +2853,7 @@
 }
 \thu@set@student@id
 \thu@option@hook{thesis-type}{\thu@set@student@id}
+\thu@option@hook{student-id}{\thu@set@student@id}
 \newcommand\thu@titlepage@secret{%
   \sffamily\sanhao
   \ifx\thu@secret@level\@empty
