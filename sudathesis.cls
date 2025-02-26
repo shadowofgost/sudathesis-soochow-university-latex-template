@@ -2022,20 +2022,20 @@
         \ctexset{
           chapter = {
             name   = {第,章},
-            number = \chinese{chapter},
+            number = \arabic{chapter},
           },
           section = {
             name   = {第,节},
-            number = \chinese{section},
+            number = \thechapter.\arabic{section},
           },
           subsection = {
-            name   = {,、},
-            number = \chinese{subsection},
+            name   = {第,节},
+            number = \thechapter.\arabic{section}.\arabic{subsection},
             aftername  = {},
           },
           subsubsection = {
-            name   = {（,）},
-            number = \chinese{subsubsection},
+            name   = {第,节},
+            number = \thechapter.\arabic{section}.\arabic{subsection}.\arabic{subsubsection},
             aftername  = {},
           },
         }%
@@ -2087,22 +2087,22 @@
         \ctexset{
           chapter = {
             name   = {第,章},
-            number = \chinese{chapter},
+            number = \arabic{chapter},
           },
           section = {
             format     = \centering\sffamily\zititime\fontsize{14bp}{27.3bp}\selectfont,
             name   = {第,节},
-            number = \chinese{section},
+            number = \thechapter.\arabic{section},
           },
           subsection = {
-            name   = {,、},
-            number = \chinese{subsection},
-            aftername  = {},
+            name   = {第,节},
+            number = \thechapter.\arabic{section}.\arabic{subsection},
+            aftername  = {\quad},
           },
           subsubsection = {
-            name   = {（,）},
-            number = \chinese{subsubsection},
-            aftername  = {},
+            name   = {第,节},
+            number = \thechapter.\arabic{section}.\arabic{subsection}.\arabic{subsubsection},
+            aftername  = {\quad},
           },
         }%
       \fi
