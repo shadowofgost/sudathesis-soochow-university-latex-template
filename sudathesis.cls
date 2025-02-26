@@ -2064,7 +2064,7 @@
           afterskip  = 13.65bp,
         },
         subsection = {
-          format     = \kaiti\zititime\fontsize{12bp}{23.4bp}\selectfont,
+          format     = \sffamily\zititime\fontsize{12bp}{23.4bp}\selectfont,
           aftername  = \quad,
           beforeskip = 11.7bp,
           afterskip  = 11.7bp,
