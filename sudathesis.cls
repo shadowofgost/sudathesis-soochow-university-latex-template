@@ -4,7 +4,7 @@
 %% @Description      :
 %% @Email            : shadowofgost@outlook.com
 %% @FilePath         : /sudathesis-soochow-university-latex-template/sudathesis.cls
-%% @LastTime         : 2024-05-21 23:40:26
+%% @LastTime         : 2025-03-03 05:49:02
 %% @LastAuthor       : Albert Wang
 %% @Software         : Vscode
 %% @ Copyright Notice : Copyright (c) 2023 Albert Wang 王子睿, All Rights Reserved.
@@ -3416,8 +3416,8 @@
         aftername  = \quad,
       },
       }%
+    \thu@chapter*[]{\thu@title\\\thu@abstract@name}%
     %%% TODO:以上为额外添加
-    \thu@chapter*[]{\thu@abstract@name}%
   \fi
 }{%
   \par
@@ -3450,8 +3450,8 @@
         aftername  = \quad,
       },
       }%
+    \thu@chapter*[]{\thu@title@en\\\thu@abstract@name@en}%
     %%% TODO以上为额外添加
-    \thu@chapter*[]{\thu@abstract@name@en}%
   \fi
 }{%
   \par
