@@ -82,14 +82,14 @@
 
 
 % 书面翻译的参考文献
-\bibliographystyle{unsrtnat}
-\bibliography{ref/appendix}
+\bibliographystyle{thuthesis-bachelor.bst}  % 修改为GB7714引用格式，但要注意本地编译，在线编译器偶发找不到文件报错
+\bibliography{reference/appendix}  % 修改为正确引用路径
 
 % 书面翻译对应的原文索引
-\begin{translation-index}
-  \nocite{salomon1995advanced}
-  \bibliographystyle{unsrtnat}
-  \bibliography{ref/appendix}
-\end{translation-index}
+% \begin{translation-index}
+%   \nocite{salomon1995advanced}
+%   \bibliographystyle{thuthesis-bachelor.bst}
+%   \bibliography{ref/appendix}
+% \end{translation-index}  % 基本用不到，这里建议注释掉，减少报错
 
 \end{translation}
